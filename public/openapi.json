@@ -1,0 +1,90 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/api": {
+      "get": {
+        "operationId": "AppController_getHello",
+        "summary": "Order Details",
+        "description": "Get the details of an existing order.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderDetailsResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "API Demo",
+    "description": "API Demo",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http",
+        "description": "Access to any part of this API other than the <code><a href='#operation/post-authenticate'>/authenticate</a></code> endpoint requires bearer token authentication with a JSON Web Token (JWT).\n\nTo obtain an access token, send a request to the `/authenticate` endpoint using Basic authentication with the credentials provided by the onboarding team.\n\n> **NOTE:** Credentials will be different for the sandbox and production environments which means credentials for one environment cannot be used for the other.\n\n<br>\n<p class=\"code-title\">Request example</p>\n\n```sh\ncurl --request POST \\\n--location \"https://demo-api.com/api/authenticate\" \\\n--header \"Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=\" \\\n--header \"Content-Type: application/json\"\n```\n\n<br>\n<p class=\"code-title\">Response example</p>\n\n```json\n{ \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\" }\n```\n\n<br>\n<p class=\"code-title\">JWT request example</p>\n\n```sh\ncurl --request POST \\\n--location \"https://demo-api.com/api/criminal-search\" \\\n--header \"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\" \\\n--header \"Content-Type: application/json\" \\\n--data \"{...}\"\n```\n\n<br>\n"
+      }
+    },
+    "schemas": {
+      "OrderDetailsResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "The current status of the order",
+            "example": "Completed",
+            "enum": [
+              "Completed",
+              "Order accepted - processing",
+              "Order accepted - awaiting documentation"
+            ],
+            "minLength": 1
+          },
+          "completedOn": {
+            "type": "string",
+            "description": "The date this order was fulfilled\n      > **NOTE:** value will be \null if order has not been fulfilled",
+            "example": "2022-01-01",
+            "pattern": "^d{4}-d{2}-d{2}$",
+            "format": "date",
+            "nullable": true
+          },
+          "dppa": {
+            "type": "string",
+            "description": "The DPPA reason for the order\n      - `E` = Employment\n      - `I` = Insurance\n      - `R` = Rental\n      - `V` = Verification",
+            "example": "E",
+            "enum": [
+              "E",
+              "I",
+              "R",
+              "V"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "completedOn",
+          "dppa"
+        ]
+      }
+    }
+  }
+}
