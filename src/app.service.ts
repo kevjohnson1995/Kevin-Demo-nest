@@ -3,7 +3,7 @@ import { OrderDetailsResponse } from './dto/test';
 
 @Injectable()
 export class AppService {
-  getHello(): OrderDetailsResponse {
+  getOrderDetails(): OrderDetailsResponse {
     return {
       dppa: 'E',
       status: 'Completed',

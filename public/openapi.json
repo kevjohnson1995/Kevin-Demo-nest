@@ -3,10 +3,29 @@
   "paths": {
     "/api": {
       "get": {
-        "operationId": "AppController_getHello",
+        "operationId": "get-order-details",
         "summary": "Order Details",
         "description": "Get the details of an existing order.",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer token retrieved from the `/authenticate` endpoint sent as `Bearer <token>`",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Must be set to `application/json`",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -14,6 +33,56 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/OrderDetailsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Validation errors found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrors"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
                 }
               }
             }
@@ -61,7 +130,7 @@
           },
           "completedOn": {
             "type": "string",
-            "description": "The date this order was fulfilled\n      > **NOTE:** value will be \null if order has not been fulfilled",
+            "description": "The date this order was fulfilled\n      \n> **NOTE:** value will be `null` if order has not been fulfilled",
             "example": "2022-01-01",
             "pattern": "^d{4}-d{2}-d{2}$",
             "format": "date",
@@ -69,7 +138,7 @@
           },
           "dppa": {
             "type": "string",
-            "description": "The DPPA reason for the order\n      - `E` = Employment\n      - `I` = Insurance\n      - `R` = Rental\n      - `V` = Verification",
+            "description": "The DPPA reason for the order\n      \n- `E` = Employment\n      \n- `I` = Insurance\n      \n- `R` = Rental\n      \n- `V` = Verification",
             "example": "E",
             "enum": [
               "E",
@@ -83,6 +152,76 @@
           "status",
           "completedOn",
           "dppa"
+        ]
+      },
+      "BadRequest": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "example": "Bad request",
+            "default": "Bad request"
+          }
+        },
+        "required": [
+          "message"
+        ]
+      },
+      "Unauthorized": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "example": "Unauthorized",
+            "default": "Unauthorized"
+          }
+        },
+        "required": [
+          "message"
+        ]
+      },
+      "Forbidden": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "example": "Forbidden",
+            "default": "Forbidden"
+          }
+        },
+        "required": [
+          "message"
+        ]
+      },
+      "ValidationErrors": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "example": "Validation errors found",
+            "default": "Validation errors found"
+          }
+        },
+        "required": [
+          "message"
+        ]
+      },
+      "InternalServerError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "example": "Internal server error",
+            "default": "Internal server error"
+          }
+        },
+        "required": [
+          "message"
         ]
       }
     }

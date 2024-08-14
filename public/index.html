@@ -8,11 +8,17 @@
       defer
       src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"
     ></script>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
   </head>
   <body>
     <redoc
       spec-url="./openapi.json"
       options='{ "enableConsole": true }'
+      show-webhook-verb
     ></redoc>
   </body>
 </html>

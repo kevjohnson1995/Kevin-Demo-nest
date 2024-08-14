@@ -19,7 +19,7 @@ export class OrderDetailsResponse {
 
   @ApiProperty({
     description: `The date this order was fulfilled
-      > **NOTE:** value will be \null\ if order has not been fulfilled`,
+      \n> **NOTE:** value will be \`null\` if order has not been fulfilled`,
     example: '2022-01-01',
     pattern: '^d{4}-d{2}-d{2}$',
     format: 'date',
@@ -29,10 +29,10 @@ export class OrderDetailsResponse {
 
   @ApiProperty({
     description: `The DPPA reason for the order
-      - \`E\` = Employment
-      - \`I\` = Insurance
-      - \`R\` = Rental
-      - \`V\` = Verification`,
+      \n- \`E\` = Employment
+      \n- \`I\` = Insurance
+      \n- \`R\` = Rental
+      \n- \`V\` = Verification`,
     example: 'E',
     enum: ['E', 'I', 'R', 'V'],
   })
