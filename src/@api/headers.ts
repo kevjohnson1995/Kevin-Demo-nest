@@ -4,7 +4,7 @@ export const BearerAuthHeaders: ApiHeaderOptions[] = [
   {
     name: 'Authorization',
     required: true,
-    description: `Bearer token retrieved from the \`/authenticate\` endpoint sent as \`Bearer <token>\``,
+    description: `Bearer token retrieved from the <code><a href='#operation/post-authenticate'>/authenticate</a></code> endpoint sent as \`Bearer <token>\``,
   },
   {
     name: 'Content-Type',

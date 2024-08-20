@@ -10,7 +10,7 @@
           {
             "name": "Authorization",
             "in": "header",
-            "description": "Bearer token retrieved from the `/authenticate` endpoint sent as `Bearer <token>`",
+            "description": "Bearer token retrieved from the <code><a href='#operation/post-authenticate'>/authenticate</a></code> endpoint sent as `Bearer <token>`",
             "required": true,
             "schema": {
               "type": "string"
