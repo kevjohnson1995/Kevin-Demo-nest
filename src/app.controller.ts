@@ -39,7 +39,6 @@ export class AppController {
     description: 'The order request body',
   })
   @ApiResponse({ status: 200, description: 'OK', type: OrderDetailsResponse })
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   postOrder(@Body() order: Order): OrderDetailsResponse | { message: string } {
     order.referenceId = order.referenceId.toLowerCase();
 
