@@ -1,31 +1,33 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { readFileSync } from 'fs';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { InfoObject } from '@nestjs/swagger/dist/interfaces/open-api-spec.interface';
 import { Response } from 'express';
+import { Tags } from './@api/tags';
+import { useMarkdown } from './util/useMarkdown';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.setGlobalPrefix('api');
 
-  const md_access_tokens = readFileSync(
-    join(__dirname, '..', 'public', 'AccessTokens.md'),
-  );
-
   const config = new DocumentBuilder()
     .setTitle('API Demo')
-    .setDescription('API Demo')
+    .setDescription(useMarkdown('ApiOverview.md'))
     .setVersion('1.0')
     .addBearerAuth(
       {
         type: 'http',
         scheme: 'bearer',
-        description: md_access_tokens.toString('utf8'),
+        description: useMarkdown('AccessTokens.md'),
       },
       'Bearer',
+    )
+    .addTag(
+      Tags.ORDER_SEARCH.name,
+      Tags.ORDER_SEARCH.description,
+      Tags.ORDER_SEARCH.externalDocs,
     )
     .build();
 

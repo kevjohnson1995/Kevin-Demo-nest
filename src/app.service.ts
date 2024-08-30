@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { Order, OrderDetailsResponse } from './dto/test';
+import { OrderResponse } from './dto/OrderResponse';
+import { OrderRequest } from './dto/OrderRequest';
 
 @Injectable()
 export class AppService {
-  getOrderDetails(order: Order): OrderDetailsResponse {
+  getOrderDetails(order: OrderRequest): OrderResponse {
     return {
       result: 'Clear',
       status: 'Completed',

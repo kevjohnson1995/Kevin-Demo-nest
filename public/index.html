@@ -2,12 +2,6 @@
 <html>
   <head>
     <title>API Documentation</title>
-    <!-- Redoc script -->
-    <!-- <script src="/redoc/redoc.standalone.js"></script> -->
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"
-    ></script>
     <style>
       body {
         margin: 0;
@@ -18,13 +12,54 @@
         width: 10em;
         margin: 1em auto 2em;
       }
+
+      pre,
+      [id^='react-tabs'],
+      [data-section-id^='operation'] > div:nth-of-type(2) button {
+        background-color: #282e36 !important;
+        border-radius: 4px !important;
+      }
+      [data-section-id^='operation'] ul[role='tablist'] > li.react-tabs__tab {
+        color: #333 !important;
+        background: #fff !important;
+      }
+      [data-section-id^='operation'] h3 {
+        color: #333333;
+      }
+
+      .react-tabs__tab-panel > div > div > span,
+      [id^='react-tabs-'] > div > div:nth-child(2) > div > span {
+        color: #e0e0e0 !important;
+      }
+      .dropdown,
+      .react-tabs__tab-panel > div > div:first-child > div,
+      .react-tabs__tab-panel
+        > div
+        > div:nth-child(2)
+        > div:first-child
+        > span
+        + div {
+        border-radius: 4px !important;
+        background-color: #3a4750 !important;
+      }
     </style>
   </head>
   <body>
-    <redoc
-      spec-url="/api-spec"
-      options='{ "enableConsole": true }'
-      show-webhook-verb
-    ></redoc>
+    <div id="redoc-container"></div>
+    <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"></script>
+    <script>
+      Redoc.init(
+        '/api-spec',
+        {
+          enableConsole: true,
+          theme: {
+            rightPanel: {
+              backgroundColor: '#fff',
+            },
+          },
+        },
+        document.getElementById('redoc-container'),
+      );
+    </script>
   </body>
 </html>

@@ -1,27 +1,40 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Order, OrderDetailsResponse } from './dto/test';
-import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { DefaultBearerAuth, DefaultErrorResponses } from './@api/defaults';
+import { OrderResponse } from './dto/OrderResponse';
+import { OrderRequest } from './dto/OrderRequest';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  private orders: Record<string, OrderDetailsResponse> = {};
+  private orders: Record<string, OrderResponse> = {};
 
   @Get('order/:id')
+  @ApiTags('Order Search')
   @DefaultBearerAuth()
   @DefaultErrorResponses()
+  @ApiParam({
+    name: 'id',
+    description: 'The unique identifier for the order',
+    example: 'ABC-123',
+    required: true,
+    type: String,
+  })
   @ApiOperation({
     summary: 'Order Details',
     description: 'Get the details of an existing order.',
     operationId: 'get-order-details',
   })
-  @ApiResponse({ status: 200, description: 'OK', type: OrderDetailsResponse })
-  getOrderDetails(
-    @Param('id') id: string,
-  ): OrderDetailsResponse | { message: string } {
+  @ApiResponse({ status: 200, description: 'OK', type: OrderResponse })
+  getOrder(@Param('id') id: string): OrderResponse | { message: string } {
     return this.orders[id.toLowerCase()] ?? { message: 'Order not found' };
   }
 
@@ -34,12 +47,13 @@ export class AppController {
     operationId: 'place-order',
   })
   @ApiBody({
-    type: Order,
+    type: OrderRequest,
     required: true,
     description: 'The order request body',
   })
-  @ApiResponse({ status: 200, description: 'OK', type: OrderDetailsResponse })
-  postOrder(@Body() order: Order): OrderDetailsResponse | { message: string } {
+  @ApiResponse({ status: 200, description: 'OK', type: OrderResponse })
+  @ApiTags('Order Search')
+  postOrder(@Body() order: OrderRequest): OrderResponse | { message: string } {
     order.referenceId = order.referenceId.toLowerCase();
 
     if (this.orders[order.referenceId]) {
