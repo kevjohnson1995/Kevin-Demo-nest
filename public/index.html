@@ -42,11 +42,23 @@
         border-radius: 4px !important;
         background-color: #3a4750 !important;
       }
+
+      [id^='tag/']:not([id*='/'][id*='/']) {
+        border-bottom: 1px solid !important;
+      }
     </style>
   </head>
   <body>
     <div id="redoc-container"></div>
     <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"></script>
+    <script>
+      document.addEventListener('redoc-loaded', function (event) {
+        document.querySelectorAll('[data-section-id^="tag/"]').forEach((e) => {
+          const slashCount = (e.id.match(/\//g) || []).length;
+          if (slashCount === 1) e.style.borderBottom = '1px solid #0003';
+        });
+      });
+    </script>
     <script>
       Redoc.init(
         '/api-spec',
@@ -60,6 +72,9 @@
         },
         document.getElementById('redoc-container'),
       );
+      setTimeout(() => {
+        document.dispatchEvent(new CustomEvent('redoc-loaded'));
+      }, 50);
     </script>
   </body>
 </html>
