@@ -93,6 +93,109 @@
             "Bearer": []
           }
         ]
+      },
+      "post": {
+        "operationId": "place-order",
+        "summary": "Place Order",
+        "description": "Place a new order.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Bearer token retrieved from the <code><a href='#operation/post-authenticate'>/authenticate</a></code> endpoint sent as `Bearer <token>`",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "Must be set to `application/json`",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "The order request body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderDetailsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Validation errors found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationErrors"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       }
     }
   },
@@ -100,7 +203,11 @@
     "title": "API Demo",
     "description": "API Demo",
     "version": "1.0",
-    "contact": {}
+    "contact": {},
+    "x-logo": {
+      "url": "./company-logo.jpg",
+      "altText": "Company Logo"
+    }
   },
   "tags": [],
   "servers": [],
@@ -136,22 +243,21 @@
             "format": "date",
             "nullable": true
           },
-          "dppa": {
+          "result": {
             "type": "string",
-            "description": "The DPPA reason for the order\n      \n- `E` = Employment\n      \n- `I` = Insurance\n      \n- `R` = Rental\n      \n- `V` = Verification",
-            "example": "E",
+            "description": "The result of the search",
+            "example": "Clear",
             "enum": [
-              "E",
-              "I",
-              "R",
-              "V"
+              "Clear",
+              "Not Clear",
+              "Unable to verify"
             ]
           }
         },
         "required": [
           "status",
           "completedOn",
-          "dppa"
+          "result"
         ]
       },
       "BadRequest": {
@@ -222,6 +328,50 @@
         },
         "required": [
           "message"
+        ]
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "referenceId": {
+            "type": "string",
+            "description": "Unique ID to reference this order with",
+            "example": "ABC-123",
+            "minLength": 1
+          },
+          "firstName": {
+            "type": "string",
+            "description": "The first name to search on",
+            "example": "John",
+            "pattern": "^[A-Za-z0-9'-]{1,30}$",
+            "minLength": 1,
+            "nullable": false
+          },
+          "lastName": {
+            "type": "string",
+            "description": "The last name to search on",
+            "example": "Smith",
+            "pattern": "^[A-Za-z0-9'-]{1,30}$",
+            "minLength": 1,
+            "nullable": false
+          },
+          "searchType": {
+            "type": "string",
+            "description": "The search type to perform\n      \n- `CR` = Criminal\n      \n- `SO` = Sex Offender\n      \n- `MV` = Motor Vehicle\n      \n- `TN` = Tenant",
+            "example": "CR",
+            "enum": [
+              "CR",
+              "SO",
+              "TN",
+              "MV"
+            ]
+          }
+        },
+        "required": [
+          "referenceId",
+          "firstName",
+          "lastName",
+          "searchType"
         ]
       }
     }

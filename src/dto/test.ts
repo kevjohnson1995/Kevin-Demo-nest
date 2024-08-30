@@ -5,8 +5,54 @@ const Statuses = [
   'Order accepted - processing',
   'Order accepted - awaiting documentation',
 ] as const;
-
 type Status = (typeof Statuses)[number];
+
+const SearchTypes = ['CR', 'SO', 'TN', 'MV'] as const;
+type SearchType = (typeof SearchTypes)[number];
+
+const SearchResults = ['Clear', 'Not Clear', 'Unable to verify'] as const;
+type SearchResult = (typeof SearchResults)[number];
+
+export class Order {
+  @ApiProperty({
+    description: 'Unique ID to reference this order with',
+    example: 'ABC-123',
+    minLength: 1,
+    required: true,
+  })
+  referenceId: string;
+
+  @ApiProperty({
+    description: 'The first name to search on',
+    example: 'John',
+    pattern: `^[A-Za-z0-9'-]{1,30}$`,
+    minLength: 1,
+    nullable: false,
+    required: true,
+  })
+  firstName: string;
+
+  @ApiProperty({
+    description: 'The last name to search on',
+    example: 'Smith',
+    pattern: `^[A-Za-z0-9'-]{1,30}$`,
+    minLength: 1,
+    nullable: false,
+    required: true,
+  })
+  lastName: string;
+
+  @ApiProperty({
+    description: `The search type to perform
+      \n- \`CR\` = Criminal
+      \n- \`SO\` = Sex Offender
+      \n- \`MV\` = Motor Vehicle
+      \n- \`TN\` = Tenant`,
+    example: 'CR',
+    enum: SearchTypes,
+  })
+  searchType: SearchType;
+}
 
 export class OrderDetailsResponse {
   @ApiProperty({
@@ -27,14 +73,13 @@ export class OrderDetailsResponse {
   })
   completedOn: string;
 
+  @ApiProperty({ description: 'The search input', required: true })
+  search: Order;
+
   @ApiProperty({
-    description: `The DPPA reason for the order
-      \n- \`E\` = Employment
-      \n- \`I\` = Insurance
-      \n- \`R\` = Rental
-      \n- \`V\` = Verification`,
-    example: 'E',
-    enum: ['E', 'I', 'R', 'V'],
+    description: 'The result of the search',
+    example: 'Clear',
+    enum: SearchResults,
   })
-  dppa: 'E' | 'I' | 'R' | 'V';
+  result: SearchResult;
 }

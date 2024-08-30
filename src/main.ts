@@ -1,9 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync } from 'fs';
 import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
+import { InfoObject } from '@nestjs/swagger/dist/interfaces/open-api-spec.interface';
+import { Response } from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -28,9 +30,16 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  const outputPath = join(__dirname, '..', 'public', 'openapi.json');
-  writeFileSync(outputPath, JSON.stringify(document, null, 2));
-  app.useStaticAssets(join(__dirname, '..', 'public')); // Call after writing to path
+  document.info = {
+    ...document.info,
+    'x-logo': {
+      url: './company-logo.jpg',
+      altText: 'Company Logo',
+    },
+  } as InfoObject;
+
+  app.use('/api-spec', (_: Request, res: Response) => res.json(document));
+  app.useStaticAssets(join(__dirname, '..', 'public'));
 
   const port = 3000;
   await app.listen(port);

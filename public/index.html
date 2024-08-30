@@ -11,12 +11,18 @@
     <style>
       body {
         margin: 0;
+        padding: 0;
+      }
+
+      .menu-content > div:first-of-type img {
+        width: 10em;
+        margin: 1em auto 2em;
       }
     </style>
   </head>
   <body>
     <redoc
-      spec-url="./openapi.json"
+      spec-url="/api-spec"
       options='{ "enableConsole": true }'
       show-webhook-verb
     ></redoc>

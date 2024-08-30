@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { OrderDetailsResponse } from './dto/test';
+import { Order, OrderDetailsResponse } from './dto/test';
 
 @Injectable()
 export class AppService {
-  getOrderDetails(): OrderDetailsResponse {
+  getOrderDetails(order: Order): OrderDetailsResponse {
     return {
-      dppa: 'E',
+      result: 'Clear',
       status: 'Completed',
+      search: order,
       completedOn: new Date().toISOString(),
     };
   }
