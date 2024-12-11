@@ -1,0 +1,394 @@
+{
+	"info": {
+		"_postman_id": "42676d2a-c05c-408c-a99e-04d67973ceef",
+		"name": "MVR Fake Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37065125"
+	},
+	"item": [
+		{
+			"name": "Authenticate (token)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "rCbPrSv0FBTC99hSb9pzFJdIYk2SZKYAIohnTtcsRGsetrXIPi",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "1R220DRW51TRWDDKKEM5",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://driver-history-api-sandbox.tesseradata.com/v1/authenticate",
+					"protocol": "https",
+					"host": [
+						"driver-history-api-sandbox",
+						"tesseradata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit MVR Fake order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Username",
+						"value": "1R220DRW51TRWDDKKEM5",
+						"type": "text"
+					},
+					{
+						"key": "Password",
+						"value": "rCbPrSv0FBTC99hSb9pzFJdIYk2SZKYAIohnTtcsRGsetrXIPi",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"dppa\": \"E\",\r\n    \"originalRequester\": \"Company B, Inc.\",\r\n    \"recordType\": \"3\",\r\n    \"clientReferenceId\": \"testing01\",\r\n    \"requesterCode\": \"ABCDE\",\r\n    \"webhook\": \"https://webhook.site\",\r\n    \"license\": \r\n\r\n{\r\n\r\n    \"number\": \"1234567891\",\r\n    \"jurisdiction\": \"NC\",\r\n    \"dateOfBirth\": \"2000-01-01\",\r\n    \"name\": \r\n\r\n{\r\n\r\n    \"first\": \"John\",\r\n    \"middle\": \"Quincy\",\r\n    \"last\": \"Smith\"\r\n\r\n},\r\n\"address\": \r\n\r\n    {\r\n        \"streetOne\": \"123 Quality Dr\",\r\n        \"streetTwo\": \"Unit B\",\r\n        \"city\": \"Los Angeles\",\r\n        \"state\": \"CA\",\r\n        \"postalCode\": \"90001\",\r\n        \"country\": \"USA\"\r\n    }\r\n\r\n},\r\n\"contact\": \r\n{\r\n\r\n    \"phone\": \"123-456-7890\",\r\n    \"email\": \"john.smith@company.com\"\r\n\r\n},\r\n\"verification\": \r\n\r\n    {\r\n        \"ssn\": \"123-45-6789\",\r\n        \"mothersMaidenName\": \"Doe\"\r\n    }\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://driver-history-api-sandbox.tesseradata.com/v1/mvr-search/order",
+					"protocol": "https",
+					"host": [
+						"driver-history-api-sandbox",
+						"tesseradata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"mvr-search",
+						"order"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Fake Example NC",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"dppa\": \"E\",\r\n    \"originalRequester\": \"Company B, Inc.\",\r\n    \"recordType\": \"3\",\r\n    \"clientReferenceId\": \"ABC-123\",\r\n    \"requesterCode\": \"ABCDE\",\r\n    \"webhook\": \"https://webhook.site\",\r\n    \"license\": \r\n\r\n{\r\n\r\n    \"number\": \"1234567891\",\r\n    \"jurisdiction\": \"NC\",\r\n    \"dateOfBirth\": \"2000-01-01\",\r\n    \"name\": \r\n\r\n{\r\n\r\n    \"first\": \"John\",\r\n    \"middle\": \"Quincy\",\r\n    \"last\": \"Smith\"\r\n\r\n},\r\n\"address\": \r\n\r\n    {\r\n        \"streetOne\": \"123 Quality Dr\",\r\n        \"streetTwo\": \"Unit B\",\r\n        \"city\": \"Los Angeles\",\r\n        \"state\": \"CA\",\r\n        \"postalCode\": \"90001\",\r\n        \"country\": \"USA\"\r\n    }\r\n\r\n},\r\n\"contact\": \r\n{\r\n\r\n    \"phone\": \"123-456-7890\",\r\n    \"email\": \"john.smith@company.com\"\r\n\r\n},\r\n\"verification\": \r\n\r\n    {\r\n        \"ssn\": \"123-45-6789\",\r\n        \"mothersMaidenName\": \"Doe\"\r\n    }\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://driver-history-api-sandbox.tesseradata.com/v1/mvr-search/order",
+							"protocol": "https",
+							"host": [
+								"driver-history-api-sandbox",
+								"tesseradata",
+								"com"
+							],
+							"path": [
+								"v1",
+								"mvr-search",
+								"order"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 23 Jul 2024 16:28:05 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "149"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "37e8e5b4-1a2f-4fe9-bfb1-96c78f816016"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "bX8DYGVxIAMEbSg="
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-669fda15-6d94dd6a17d95b831176e095"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Order accepted\",\n    \"clientReferenceId\": \"ABC-123\",\n    \"uuid\": \"37e8e5b4-1a2f-4fe9-bfb1-96c78f816016\",\n    \"remainingDocuments\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Fake order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjo4NCwiYWNjb3VudF9uYW1lIjoiU2RieFRleHQiLCJiaWxsaW5nX2lkIjo4NCwiZ3JvdXBzIjpbIkFQSSIsIk1WUiJdLCJpYXQiOjE3MzM4ODIyNzAsImV4cCI6MTczMzg4NTg3MCwiaXNzIjoiZHJpdmVyLWhpc3RvcnktYXBpLXNhbmRib3gudGVzc2VyYWRhdGEuY29tIn0.e-3bR7SzgAeNJ-fmJnvI13b1HpoOv193wds9FfFaB10",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://driver-history-api-sandbox.tesseradata.com/v1/mvr-search/details/testing011",
+					"protocol": "https",
+					"host": [
+						"driver-history-api-sandbox",
+						"tesseradata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"mvr-search",
+						"details",
+						"testing011"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Fake order NC",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://driver-history-api-sandbox.tesseradata.com/v1/mvr-search/details/test123",
+							"protocol": "https",
+							"host": [
+								"driver-history-api-sandbox",
+								"tesseradata",
+								"com"
+							],
+							"path": [
+								"v1",
+								"mvr-search",
+								"details",
+								"test123"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 23 Jul 2024 16:32:09 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "719"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "3d7d5104-ddd8-4d59-8353-91cfa9b45f0d"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "bX8pZGyfIAMETEg="
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-669fdb08-7dc248a36a9e491f7994f01d"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"Postback failed: POST returned 403\",\n    \"orderedOn\": \"2024-07-23\",\n    \"completedOn\": \"2024-07-23\",\n    \"clientReferenceId\": \"test123\",\n    \"contact\": {\n        \"phone\": \"123-456-7890\",\n        \"email\": \"john.smith@company.com\"\n    },\n    \"dppa\": \"E\",\n    \"originalRequester\": \"Company B, Inc.\",\n    \"recordType\": \"3\",\n    \"requesterCode\": \"ABCDE\",\n    \"uuid\": \"642d839b-1788-4332-87fd-d23eedc54931\",\n    \"verification\": null,\n    \"webhook\": \"https://webhook.site\",\n    \"license\": {\n        \"jurisdiction\": \"NC\",\n        \"number\": \"1234567891\",\n        \"dateOfBirth\": \"2000-01-01\",\n        \"address\": {\n            \"streetOne\": \"123 Quality Dr\",\n            \"streetTwo\": \"Unit B\",\n            \"city\": \"Los Angeles\",\n            \"state\": \"CA\",\n            \"postalCode\": \"90001\",\n            \"country\": \"USA\"\n        },\n        \"name\": {\n            \"first\": \"John\",\n            \"middle\": \"Quincy\",\n            \"last\": \"Smith\"\n        }\n    },\n    \"documents\": {\n        \"required\": null,\n        \"submitted\": null,\n        \"missing\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Healthcheck",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjo4NCwiYWNjb3VudF9uYW1lIjoiU2RieFRleHQiLCJiaWxsaW5nX2lkIjo4NCwiZ3JvdXBzIjpbIkFQSSIsIk1WUiJdLCJpYXQiOjE3MjE3NTE4NzcsImV4cCI6MTcyMTc1NTQ3NywiaXNzIjoiZHJpdmVyLWhpc3RvcnktYXBpLXNhbmRib3gudGVzc2VyYWRhdGEuY29tIn0.MaI86WJ9WrazyVzI-GIU5lYSWtPWj2jQs8aqBfh2-QY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://driver-history-api-sandbox.tesseradata.com/v1/healthcheck",
+					"protocol": "https",
+					"host": [
+						"driver-history-api-sandbox",
+						"tesseradata",
+						"com"
+					],
+					"path": [
+						"v1",
+						"healthcheck"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Healthcheck healthy",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://driver-history-api-sandbox.tesseradata.com/v1/healthcheck",
+							"protocol": "https",
+							"host": [
+								"driver-history-api-sandbox",
+								"tesseradata",
+								"com"
+							],
+							"path": [
+								"v1",
+								"healthcheck"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 23 Jul 2024 16:33:46 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "20"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "58456f00-a119-4128-86d1-774cabaa2630"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "bX84gEKAoAMEryg="
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-669fdb69-102f8baf2643c618172d3e54"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"healthy\"\n}"
+				},
+				{
+					"name": "Healthcheck forbidden",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://driver-history-api-sandbox.tesseradata.com/v1/healthcheck",
+							"protocol": "https",
+							"host": [
+								"driver-history-api-sandbox",
+								"tesseradata",
+								"com"
+							],
+							"path": [
+								"v1",
+								"healthcheck"
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 23 Jul 2024 16:34:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "24"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "54fa6b0f-0f6e-4891-ab9d-480733caa444"
+						},
+						{
+							"key": "x-amzn-ErrorType",
+							"value": "AccessDeniedException"
+						},
+						{
+							"key": "x-amz-apigw-id",
+							"value": "bX87wET7oAMEAyQ="
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "Root=1-669fdb7e-01cb73f6443b72b63a9b43b6"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Forbidden\"\n}"
+				}
+			]
+		}
+	]
+}

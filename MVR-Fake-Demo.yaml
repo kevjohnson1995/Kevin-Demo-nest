@@ -1,0 +1,288 @@
+openapi: 3.0.0
+info:
+  title: MVR Fake Demo
+  version: 1.0.0
+servers:
+  - url: 'https://driver-history-api-sandbox.tesseradata.com'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    noauthAuth:
+      type: http
+      scheme: noauth
+    bearerAuth:
+      type: http
+      scheme: bearer
+paths:
+  /v1/authenticate:
+    post:
+      tags:
+        - default
+      summary: Authenticate (token)
+      requestBody:
+        content: {}
+      security:
+        - basicAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/mvr-search/order:
+    post:
+      tags:
+        - default
+      summary: Submit MVR Fake order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                dppa: E
+                originalRequester: 'Company B, Inc.'
+                recordType: '3'
+                clientReferenceId: testing01
+                requesterCode: ABCDE
+                webhook: 'https://webhook.site'
+                license:
+                  number: '1234567891'
+                  jurisdiction: NC
+                  dateOfBirth: '2000-01-01'
+                  name:
+                    first: John
+                    middle: Quincy
+                    last: Smith
+                  address:
+                    streetOne: 123 Quality Dr
+                    streetTwo: Unit B
+                    city: Los Angeles
+                    state: CA
+                    postalCode: '90001'
+                    country: USA
+                contact:
+                  phone: 123-456-7890
+                  email: john.smith@company.com
+                verification:
+                  ssn: 123-45-6789
+                  mothersMaidenName: Doe
+      security:
+        - noauthAuth: []
+      parameters:
+        - name: Username
+          in: header
+          schema:
+            type: string
+          example: 1R220DRW51TRWDDKKEM5
+        - name: Password
+          in: header
+          schema:
+            type: string
+          example: rCbPrSv0FBTC99hSb9pzFJdIYk2SZKYAIohnTtcsRGsetrXIPi
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: 'Tue, 23 Jul 2024 16:28:05 GMT'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '149'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 37e8e5b4-1a2f-4fe9-bfb1-96c78f816016
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: bX8DYGVxIAMEbSg=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: Root=1-669fda15-6d94dd6a17d95b831176e095
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: SUCCESS
+                message: Order accepted
+                clientReferenceId: ABC-123
+                uuid: 37e8e5b4-1a2f-4fe9-bfb1-96c78f816016
+                remainingDocuments: null
+  /v1/mvr-search/details/testing011:
+    get:
+      tags:
+        - default
+      summary: Get Fake order
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: 'Tue, 23 Jul 2024 16:32:09 GMT'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '719'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 3d7d5104-ddd8-4d59-8353-91cfa9b45f0d
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: bX8pZGyfIAMETEg=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: Root=1-669fdb08-7dc248a36a9e491f7994f01d
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: 'Postback failed: POST returned 403'
+                orderedOn: '2024-07-23'
+                completedOn: '2024-07-23'
+                clientReferenceId: test123
+                contact:
+                  phone: 123-456-7890
+                  email: john.smith@company.com
+                dppa: E
+                originalRequester: 'Company B, Inc.'
+                recordType: '3'
+                requesterCode: ABCDE
+                uuid: 642d839b-1788-4332-87fd-d23eedc54931
+                verification: null
+                webhook: 'https://webhook.site'
+                license:
+                  jurisdiction: NC
+                  number: '1234567891'
+                  dateOfBirth: '2000-01-01'
+                  address:
+                    streetOne: 123 Quality Dr
+                    streetTwo: Unit B
+                    city: Los Angeles
+                    state: CA
+                    postalCode: '90001'
+                    country: USA
+                  name:
+                    first: John
+                    middle: Quincy
+                    last: Smith
+                documents:
+                  required: null
+                  submitted: null
+                  missing: null
+  /v1/healthcheck:
+    get:
+      tags:
+        - default
+      summary: Healthcheck
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                example: 'Tue, 23 Jul 2024 16:33:46 GMT'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '20'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 58456f00-a119-4128-86d1-774cabaa2630
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: bX84gEKAoAMEryg=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: Root=1-669fdb69-102f8baf2643c618172d3e54
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: healthy
+        '403':
+          description: Forbidden
+          headers:
+            Date:
+              schema:
+                type: string
+                example: 'Tue, 23 Jul 2024 16:34:06 GMT'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '24'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            x-amzn-RequestId:
+              schema:
+                type: string
+                example: 54fa6b0f-0f6e-4891-ab9d-480733caa444
+            x-amzn-ErrorType:
+              schema:
+                type: string
+                example: AccessDeniedException
+            x-amz-apigw-id:
+              schema:
+                type: string
+                example: bX87wET7oAMEAyQ=
+            X-Amzn-Trace-Id:
+              schema:
+                type: string
+                example: Root=1-669fdb7e-01cb73f6443b72b63a9b43b6
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Forbidden
