@@ -1,0 +1,3876 @@
+{
+  "openapi": "3.0.1",
+  "x-stoplight": {
+    "id": "szjalx9fsp5ua"
+  },
+  "info": {
+    "title": "Tessera NatCrim API",
+    "description": "Tessera's NatCrim API provides the ability to search national criminal, sex offender registry, and watchlist records.",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://natcrim-api-staging.tesseradata.com/",
+      "description": "Staging"
+    },
+    {
+      "url": "https://natcrim-api.tesseradata.com/",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/criminal/natcrim-search-by-name": {
+      "post": {
+        "tags": [
+          "Criminal"
+        ],
+        "summary": "Perform instant natcrim search by name.",
+        "description": "This endpoint performs an instant natcrim search using information provided. The data should be sent as a JSON payload in the request body.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchByNameRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Profile"
+                  }
+                },
+                "example": {
+                  "first_Name": "JOHN",
+                  "middle_Name": "J",
+                  "last_Name": "DOE",
+                  "dob": "19850000",
+                  "searchAddresses": [
+                    "US|GA|ATLANTA|BRIARLAKE|513"
+                  ],
+                  "sourceStates": [
+                    "DC",
+                    "GA",
+                    "NY"
+                  ],
+                  "sexoffenderSources": [
+                    "sof_view"
+                  ],
+                  "watchlistSources": [
+                    "watchlist_view"
+                  ],
+                  "sofs": [
+                    {
+                      "registration_Record_UID": "112521",
+                      "offender_Identity_UID": "47682",
+                      "offender_ID": "FL-36_LOUISEMMANIER_19851206",
+                      "offender_Status": "Released - Subject to Registration",
+                      "full_Name": "LOUIS, EMMANIER P",
+                      "last_Name": "LOUIS",
+                      "first_Name": "EMMANIER",
+                      "middle_Name": "P",
+                      "dob": "19851206",
+                      "address_1": "Haiti",
+                      "zip": "00000",
+                      "gender": "M",
+                      "hair_Color": "Black",
+                      "eye_Color": "Brown",
+                      "height": "511",
+                      "weight": "158",
+                      "race": "Black",
+                      "scars_Marks": "Tattoo Left Hand 1_Tattoo Left Arm 1_Tattoo Right Arm 1",
+                      "address_Verification_Date": "20120109",
+                      "case_Number": "0969158",
+                      "offense_Code": "F.S. 800.04(4)(a",
+                      "offense_Desc_1": "Lewd, Lascivious batt sex w/victim 12-15 years old",
+                      "offense_Count": "1",
+                      "victim_Age": "Minor",
+                      "offender_Image_Hyperlink": "36_LOUISEMMANIER_19851206_1.jpg",
+                      "source": "FL",
+                      "data_Date": "20241005",
+                      "source_ID": "SORFL",
+                      "epR_File_Record_Date": "9/30/2024 9:56:33 AM",
+                      "first_Name_clean": "EMMANIER",
+                      "middle_Name_clean": "P",
+                      "last_Name_clean": "LOUIS",
+                      "doB_clean": "19851206",
+                      "offenseClass": "harm",
+                      "offenseSubclass": "physical harm",
+                      "criminalRecordSourceType": "sexoffenderlist",
+                      "criminalRecordSourceSubType": "sex offender registry",
+                      "imageURI": "https://crimimages.com/SOR/FLsor.photos/36_LOUISEMMANIER_19851206_1.jpg",
+                      "disposition": "Guilty/convict",
+                      "disposition_Date": "20100601",
+                      "record_Date": "20100601",
+                      "dispositionType": "GUILTY"
+                    }
+                  ],
+                  "watchlists": [
+                    {
+                      "entity_Number": "1861463069",
+                      "file_Data_Date": "20240603",
+                      "name": "SCAVONE,JEROME GERARD",
+                      "last_Name": "SCAVONE",
+                      "first_Name": "JEROME",
+                      "middle_Name": "GERARD",
+                      "gender": "M",
+                      "dob": "19851206",
+                      "other_Information": "NPI: 1861463069; Entity_Type_Code: 1; Provider_Credential_Text: MD; Provider_First_Line_Business_Mailing_Address: 1600 LAKELAND HILLS BLVD; Last_Update_Date: 20230323; Provider_License_Number_1: ME70033; Provider_License_Number_State_Code_1: FL;",
+                      "source_Of_Info": "NPPES NPI Registry",
+                      "source_ID": "1899",
+                      "epR_File_Record_Date": "5/13/2024 4:05:08 AM",
+                      "first_Name_clean": "JEROME",
+                      "middle_Name_clean": "GERARD",
+                      "last_Name_clean": "SCAVONE",
+                      "doB_clean": "19851206",
+                      "offenseClass": "unspecified",
+                      "offenseSubclass": "unspecified",
+                      "criminalRecordSourceType": "watchlist",
+                      "criminalRecordSourceSubType": "healthcare registry",
+                      "watchlistaddresses": [
+                        {
+                          "address_ID": "1",
+                          "entity_Number": "1861463069",
+                          "address": "1600 LAKELAND HILLS BLVD",
+                          "city": "LAKELAND",
+                          "state": "FL",
+                          "postal_Code": "338053019",
+                          "country": "US",
+                          "source_ID": "1899",
+                          "epR_File_Record_Date": "5/13/2024 4:05:08 AM",
+                          "searchAddresses": "US|FL|LAKELAND|LAKELAND HILLS|1600"
+                        }
+                      ],
+                      "watchlistaliases": [
+                        {
+                          "alias_ID": "1",
+                          "entity_Number": "1861463069",
+                          "alias_Name": "DOE,JON ,",
+                          "alias_First_Name": "Jon",
+                          "alias_Last_Name": "Doe",
+                          "epR_File_Record_Date": "5/13/2024 4:05:08 AM",
+                          "source_ID": "1899",
+                          "alias_First_Name_clean": "JON",
+                          "alias_Middle_Name_clean": "",
+                          "alias_Last_Name_clean": "DOE"
+                        }
+                      ]
+                    }
+                  ],
+                  "offenders": [
+                    {
+                      "criminalRecordID": "f/z1dQur9LMoUR9fDpNe4A==",
+                      "dob": "19850000",
+                      "epR_File_Record_Date": "6/12/2019 1:17:32 AM",
+                      "first_Name": "BRANDON",
+                      "last_Name": "FOSTER",
+                      "name": "FOSTER, BRANDON",
+                      "offender_ID": "FOSTERBRANDON2017CMD018381",
+                      "source_ID": "dc_courts_view",
+                      "source_State": "DC",
+                      "aliases": [
+                        {
+                          "offender_ID": "FOSTERBRANDON2017CMD018381",
+                          "alias_Name": "FORREST, BRANDON J",
+                          "alias_First_Name": "BRANDON",
+                          "alias_Middle_Name": "J",
+                          "alias_Last_Name": "FORREST",
+                          "source_ID": "dc_courts_view",
+                          "epR_File_Record_Date": "6/12/2019 1:17:32 AM",
+                          "alias_First_Name_clean": "BRANDON",
+                          "alias_Middle_Name_clean": "J",
+                          "alias_Last_Name_clean": "FORREST"
+                        }
+                      ],
+                      "offenses": [
+                        {
+                          "case_Type": "Misdemeanor",
+                          "court_Case_Number": "2017 CMD 018381",
+                          "court_Name": "DC Courts",
+                          "date_Filed": "20171027",
+                          "disposition": "Guilty- Plea Judgment Guilty",
+                          "disposition_Date": "20171212",
+                          "epR_File_Record_Date": "6/12/2019 1:17:32 AM",
+                          "offender_ID": "FOSTERBRANDON2017CMD018381",
+                          "offense_County": "DC",
+                          "offense_ID": "1",
+                          "record_Date": "20171212",
+                          "source_ID": "dc_courts_view",
+                          "dispositionType": "GUILTY",
+                          "offenseClass": "unspecified",
+                          "offenseLevel": "MISDEMEANOR",
+                          "offenseSubclass": "unspecified"
+                        }
+                      ],
+                      "first_Name_clean": "BRANDON",
+                      "middle_Name_clean": "",
+                      "last_Name_clean": "FOSTER",
+                      "doB_clean": "19850000",
+                      "criminalRecordSourceType": "court",
+                      "criminalRecordSourceSubType": "court"
+                    }
+                  ],
+                  "profileHash": "gSOT3WxAex+I9eqdK1JA1Q==",
+                  "courtSources": [
+                    "GA_Cobb_Sheriffs_Inmates",
+                    "dc_courts_view",
+                    "nyaoc"
+                  ],
+                  "profileID": "8676de0f-e6d2-4dfd-830b-7c2368fd3bd4",
+                  "reasons": [
+                    "alias_first_name_used",
+                    "alias_last_name_used",
+                    "alias_middle_name_used"
+                  ],
+                  "replicaID": "00abe3b8-29fa-4f08-b712-b308408a3f0c",
+                  "routingID": "jd19850000"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. One or more validation errors occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Unauthorized",
+                  "status": 401,
+                  "detail": "error=invalid_token, error_description=The token expired at '02/29/2024 15:43:16'"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. An error occurred while processing your request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Internal Server Error",
+                  "status": 500,
+                  "detail": "An error occurred while processing your request."
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-stoplight": {
+          "id": "ees6dcmurg0sz"
+        }
+      }
+    },
+    "/criminal/natcrim-search-by-name-unregulated": {
+      "post": {
+        "tags": [
+          "Criminal"
+        ],
+        "summary": "Perform instant natcrim search by name.",
+        "description": "This endpoint performs an instant natcrim search using information provided. The data should be sent as a JSON payload in the request body.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchByNameRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Profile"
+                  }
+                },
+                "example": {
+                  "first_Name": "JOHN",
+                  "middle_Name": "J",
+                  "last_Name": "DOE",
+                  "dob": "19850000",
+                  "searchAddresses": [
+                    "US|GA|ATLANTA|BRIARLAKE|513"
+                  ],
+                  "sourceStates": [
+                    "DC",
+                    "GA",
+                    "NY"
+                  ],
+                  "sexoffenderSources": [
+                    "sof_view"
+                  ],
+                  "watchlistSources": [
+                    "watchlist_view"
+                  ],
+                  "sofs": [
+                    {
+                      "registration_Record_UID": "112521",
+                      "offender_Identity_UID": "47682",
+                      "offender_ID": "FL-36_LOUISEMMANIER_19851206",
+                      "offender_Status": "Released - Subject to Registration",
+                      "full_Name": "LOUIS, EMMANIER P",
+                      "last_Name": "LOUIS",
+                      "first_Name": "EMMANIER",
+                      "middle_Name": "P",
+                      "dob": "19851206",
+                      "address_1": "Haiti",
+                      "zip": "00000",
+                      "gender": "M",
+                      "hair_Color": "Black",
+                      "eye_Color": "Brown",
+                      "height": "511",
+                      "weight": "158",
+                      "race": "Black",
+                      "scars_Marks": "Tattoo Left Hand 1_Tattoo Left Arm 1_Tattoo Right Arm 1",
+                      "address_Verification_Date": "20120109",
+                      "case_Number": "0969158",
+                      "offense_Code": "F.S. 800.04(4)(a",
+                      "offense_Desc_1": "Lewd, Lascivious batt sex w/victim 12-15 years old",
+                      "offense_Count": "1",
+                      "victim_Age": "Minor",
+                      "offender_Image_Hyperlink": "36_LOUISEMMANIER_19851206_1.jpg",
+                      "source": "FL",
+                      "data_Date": "20241005",
+                      "source_ID": "SORFL",
+                      "epR_File_Record_Date": "9/30/2024 9:56:33 AM",
+                      "first_Name_clean": "EMMANIER",
+                      "middle_Name_clean": "P",
+                      "last_Name_clean": "LOUIS",
+                      "doB_clean": "19851206",
+                      "offenseClass": "harm",
+                      "offenseSubclass": "physical harm",
+                      "criminalRecordSourceType": "sexoffenderlist",
+                      "criminalRecordSourceSubType": "sex offender registry",
+                      "imageURI": "https://crimimages.com/SOR/FLsor.photos/36_LOUISEMMANIER_19851206_1.jpg",
+                      "disposition": "Guilty/convict",
+                      "disposition_Date": "20100601",
+                      "record_Date": "20100601",
+                      "dispositionType": "GUILTY"
+                    }
+                  ],
+                  "watchlists": [
+                    {
+                      "entity_Number": "1861463069",
+                      "file_Data_Date": "20240603",
+                      "name": "SCAVONE,JEROME GERARD",
+                      "last_Name": "SCAVONE",
+                      "first_Name": "JEROME",
+                      "middle_Name": "GERARD",
+                      "gender": "M",
+                      "dob": "19851206",
+                      "other_Information": "NPI: 1861463069; Entity_Type_Code: 1; Provider_Credential_Text: MD; Provider_First_Line_Business_Mailing_Address: 1600 LAKELAND HILLS BLVD; Last_Update_Date: 20230323; Provider_License_Number_1: ME70033; Provider_License_Number_State_Code_1: FL;",
+                      "source_Of_Info": "NPPES NPI Registry",
+                      "source_ID": "1899",
+                      "epR_File_Record_Date": "5/13/2024 4:05:08 AM",
+                      "first_Name_clean": "JEROME",
+                      "middle_Name_clean": "GERARD",
+                      "last_Name_clean": "SCAVONE",
+                      "doB_clean": "19851206",
+                      "offenseClass": "unspecified",
+                      "offenseSubclass": "unspecified",
+                      "criminalRecordSourceType": "watchlist",
+                      "criminalRecordSourceSubType": "healthcare registry",
+                      "watchlistaddresses": [
+                        {
+                          "address_ID": "1",
+                          "entity_Number": "1861463069",
+                          "address": "1600 LAKELAND HILLS BLVD",
+                          "city": "LAKELAND",
+                          "state": "FL",
+                          "postal_Code": "338053019",
+                          "country": "US",
+                          "source_ID": "1899",
+                          "epR_File_Record_Date": "5/13/2024 4:05:08 AM",
+                          "searchAddresses": "US|FL|LAKELAND|LAKELAND HILLS|1600"
+                        }
+                      ],
+                      "watchlistaliases": [
+                        {
+                          "alias_ID": "1",
+                          "entity_Number": "1861463069",
+                          "alias_Name": "DOE,JON ,",
+                          "alias_First_Name": "Jon",
+                          "alias_Last_Name": "Doe",
+                          "epR_File_Record_Date": "5/13/2024 4:05:08 AM",
+                          "source_ID": "1899",
+                          "alias_First_Name_clean": "JON",
+                          "alias_Middle_Name_clean": "",
+                          "alias_Last_Name_clean": "DOE"
+                        }
+                      ]
+                    }
+                  ],
+                  "offenders": [
+                    {
+                      "criminalRecordID": "f/z1dQur9LMoUR9fDpNe4A==",
+                      "dob": "19850000",
+                      "epR_File_Record_Date": "6/12/2019 1:17:32 AM",
+                      "first_Name": "BRANDON",
+                      "last_Name": "FOSTER",
+                      "name": "FOSTER, BRANDON",
+                      "offender_ID": "FOSTERBRANDON2017CMD018381",
+                      "source_ID": "dc_courts_view",
+                      "source_State": "DC",
+                      "aliases": [
+                        {
+                          "offender_ID": "FOSTERBRANDON2017CMD018381",
+                          "alias_Name": "FORREST, BRANDON J",
+                          "alias_First_Name": "BRANDON",
+                          "alias_Middle_Name": "J",
+                          "alias_Last_Name": "FORREST",
+                          "source_ID": "dc_courts_view",
+                          "epR_File_Record_Date": "6/12/2019 1:17:32 AM",
+                          "alias_First_Name_clean": "BRANDON",
+                          "alias_Middle_Name_clean": "J",
+                          "alias_Last_Name_clean": "FORREST"
+                        }
+                      ],
+                      "offenses": [
+                        {
+                          "case_Type": "Misdemeanor",
+                          "court_Case_Number": "2017 CMD 018381",
+                          "court_Name": "DC Courts",
+                          "date_Filed": "20171027",
+                          "disposition": "Guilty- Plea Judgment Guilty",
+                          "disposition_Date": "20171212",
+                          "epR_File_Record_Date": "6/12/2019 1:17:32 AM",
+                          "offender_ID": "FOSTERBRANDON2017CMD018381",
+                          "offense_County": "DC",
+                          "offense_ID": "1",
+                          "record_Date": "20171212",
+                          "source_ID": "dc_courts_view",
+                          "dispositionType": "GUILTY",
+                          "offenseClass": "unspecified",
+                          "offenseLevel": "MISDEMEANOR",
+                          "offenseSubclass": "unspecified"
+                        }
+                      ],
+                      "first_Name_clean": "BRANDON",
+                      "middle_Name_clean": "",
+                      "last_Name_clean": "FOSTER",
+                      "doB_clean": "19850000",
+                      "criminalRecordSourceType": "court",
+                      "criminalRecordSourceSubType": "court"
+                    }
+                  ],
+                  "profileHash": "gSOT3WxAex+I9eqdK1JA1Q==",
+                  "courtSources": [
+                    "GA_Cobb_Sheriffs_Inmates",
+                    "dc_courts_view",
+                    "nyaoc"
+                  ],
+                  "profileID": "8676de0f-e6d2-4dfd-830b-7c2368fd3bd4",
+                  "reasons": [
+                    "alias_first_name_used",
+                    "alias_last_name_used",
+                    "alias_middle_name_used"
+                  ],
+                  "replicaID": "00abe3b8-29fa-4f08-b712-b308408a3f0c",
+                  "routingID": "jd19850000"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. One or more validation errors occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Unauthorized",
+                  "status": 401,
+                  "detail": "error=invalid_token, error_description=The token expired at '02/29/2024 15:43:16'"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. An error occurred while processing your request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Internal Server Error",
+                  "status": 500,
+                  "detail": "An error occurred while processing your request."
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-stoplight": {
+          "id": "r0fgf7iz3h1b8"
+        }
+      }
+    },
+    "/criminal/natcrim-search-by-address": {
+      "post": {
+        "tags": [
+          "Criminal"
+        ],
+        "summary": "Perform instant natcrim search by addresses.",
+        "description": "This endpoint performs an instant natcrim search using information provided. The data should be sent as a JSON payload in the request body.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NatcrimSearchByAddressRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Profile"
+                  }
+                },
+                "example": {
+                  "first_Name": "JOHN",
+                  "middle_Name": "J",
+                  "last_Name": "DOE",
+                  "dob": "19850000",
+                  "searchAddresses": [
+                    "US|GA|ATLANTA|BRIARLAKE|513"
+                  ],
+                  "sourceStates": [
+                    "DC",
+                    "GA",
+                    "NY"
+                  ],
+                  "sexoffenderSources": [
+                    "sof_view"
+                  ],
+                  "watchlistSources": [
+                    "watchlist_view"
+                  ],
+                  "sofs": [
+                    {
+                      "registration_Record_UID": "112521",
+                      "offender_Identity_UID": "47682",
+                      "offender_ID": "FL-36_LOUISEMMANIER_19851206",
+                      "offender_Status": "Released - Subject to Registration",
+                      "full_Name": "LOUIS, EMMANIER P",
+                      "last_Name": "LOUIS",
+                      "first_Name": "EMMANIER",
+                      "middle_Name": "P",
+                      "dob": "19851206",
+                      "address_1": "Haiti",
+                      "zip": "00000",
+                      "gender": "M",
+                      "hair_Color": "Black",
+                      "eye_Color": "Brown",
+                      "height": "511",
+                      "weight": "158",
+                      "race": "Black",
+                      "scars_Marks": "Tattoo Left Hand 1_Tattoo Left Arm 1_Tattoo Right Arm 1",
+                      "address_Verification_Date": "20120109",
+                      "case_Number": "0969158",
+                      "offense_Code": "F.S. 800.04(4)(a",
+                      "offense_Desc_1": "Lewd, Lascivious batt sex w/victim 12-15 years old",
+                      "offense_Count": "1",
+                      "victim_Age": "Minor",
+                      "offender_Image_Hyperlink": "36_LOUISEMMANIER_19851206_1.jpg",
+                      "source": "FL",
+                      "data_Date": "20241005",
+                      "source_ID": "SORFL",
+                      "epR_File_Record_Date": "9/30/2024 9:56:33 AM",
+                      "first_Name_clean": "EMMANIER",
+                      "middle_Name_clean": "P",
+                      "last_Name_clean": "LOUIS",
+                      "doB_clean": "19851206",
+                      "offenseClass": "harm",
+                      "offenseSubclass": "physical harm",
+                      "criminalRecordSourceType": "sexoffenderlist",
+                      "criminalRecordSourceSubType": "sex offender registry",
+                      "imageURI": "https://crimimages.com/SOR/FLsor.photos/36_LOUISEMMANIER_19851206_1.jpg",
+                      "disposition": "Guilty/convict",
+                      "disposition_Date": "20100601",
+                      "record_Date": "20100601",
+                      "dispositionType": "GUILTY"
+                    }
+                  ],
+                  "watchlists": [
+                    {
+                      "entity_Number": "1861463069",
+                      "file_Data_Date": "20240603",
+                      "name": "SCAVONE,JEROME GERARD",
+                      "last_Name": "SCAVONE",
+                      "first_Name": "JEROME",
+                      "middle_Name": "GERARD",
+                      "gender": "M",
+                      "dob": "19851206",
+                      "other_Information": "NPI: 1861463069; Entity_Type_Code: 1; Provider_Credential_Text: MD; Provider_First_Line_Business_Mailing_Address: 1600 LAKELAND HILLS BLVD; Last_Update_Date: 20230323; Provider_License_Number_1: ME70033; Provider_License_Number_State_Code_1: FL;",
+                      "source_Of_Info": "NPPES NPI Registry",
+                      "source_ID": "1899",
+                      "epR_File_Record_Date": "5/13/2024 4:05:08 AM",
+                      "first_Name_clean": "JEROME",
+                      "middle_Name_clean": "GERARD",
+                      "last_Name_clean": "SCAVONE",
+                      "doB_clean": "19851206",
+                      "offenseClass": "unspecified",
+                      "offenseSubclass": "unspecified",
+                      "criminalRecordSourceType": "watchlist",
+                      "criminalRecordSourceSubType": "healthcare registry",
+                      "watchlistaddresses": [
+                        {
+                          "address_ID": "1",
+                          "entity_Number": "1861463069",
+                          "address": "1600 LAKELAND HILLS BLVD",
+                          "city": "LAKELAND",
+                          "state": "FL",
+                          "postal_Code": "338053019",
+                          "country": "US",
+                          "source_ID": "1899",
+                          "epR_File_Record_Date": "5/13/2024 4:05:08 AM",
+                          "searchAddresses": "US|FL|LAKELAND|LAKELAND HILLS|1600"
+                        }
+                      ],
+                      "watchlistaliases": [
+                        {
+                          "alias_ID": "1",
+                          "entity_Number": "1861463069",
+                          "alias_Name": "DOE,JON ,",
+                          "alias_First_Name": "Jon",
+                          "alias_Last_Name": "Doe",
+                          "epR_File_Record_Date": "5/13/2024 4:05:08 AM",
+                          "source_ID": "1899",
+                          "alias_First_Name_clean": "JON",
+                          "alias_Middle_Name_clean": "",
+                          "alias_Last_Name_clean": "DOE"
+                        }
+                      ]
+                    }
+                  ],
+                  "offenders": [
+                    {
+                      "criminalRecordID": "f/z1dQur9LMoUR9fDpNe4A==",
+                      "dob": "19850000",
+                      "epR_File_Record_Date": "6/12/2019 1:17:32 AM",
+                      "first_Name": "BRANDON",
+                      "last_Name": "FOSTER",
+                      "name": "FOSTER, BRANDON",
+                      "offender_ID": "FOSTERBRANDON2017CMD018381",
+                      "source_ID": "dc_courts_view",
+                      "source_State": "DC",
+                      "aliases": [
+                        {
+                          "offender_ID": "FOSTERBRANDON2017CMD018381",
+                          "alias_Name": "FORREST, BRANDON J",
+                          "alias_First_Name": "BRANDON",
+                          "alias_Middle_Name": "J",
+                          "alias_Last_Name": "FORREST",
+                          "source_ID": "dc_courts_view",
+                          "epR_File_Record_Date": "6/12/2019 1:17:32 AM",
+                          "alias_First_Name_clean": "BRANDON",
+                          "alias_Middle_Name_clean": "J",
+                          "alias_Last_Name_clean": "FORREST"
+                        }
+                      ],
+                      "offenses": [
+                        {
+                          "case_Type": "Misdemeanor",
+                          "court_Case_Number": "2017 CMD 018381",
+                          "court_Name": "DC Courts",
+                          "date_Filed": "20171027",
+                          "disposition": "Guilty- Plea Judgment Guilty",
+                          "disposition_Date": "20171212",
+                          "epR_File_Record_Date": "6/12/2019 1:17:32 AM",
+                          "offender_ID": "FOSTERBRANDON2017CMD018381",
+                          "offense_County": "DC",
+                          "offense_ID": "1",
+                          "record_Date": "20171212",
+                          "source_ID": "dc_courts_view",
+                          "dispositionType": "GUILTY",
+                          "offenseClass": "unspecified",
+                          "offenseLevel": "MISDEMEANOR",
+                          "offenseSubclass": "unspecified"
+                        }
+                      ],
+                      "first_Name_clean": "BRANDON",
+                      "middle_Name_clean": "",
+                      "last_Name_clean": "FOSTER",
+                      "doB_clean": "19850000",
+                      "criminalRecordSourceType": "court",
+                      "criminalRecordSourceSubType": "court"
+                    }
+                  ],
+                  "profileHash": "gSOT3WxAex+I9eqdK1JA1Q==",
+                  "courtSources": [
+                    "GA_Cobb_Sheriffs_Inmates",
+                    "dc_courts_view",
+                    "nyaoc"
+                  ],
+                  "profileID": "8676de0f-e6d2-4dfd-830b-7c2368fd3bd4",
+                  "reasons": [
+                    "alias_first_name_used",
+                    "alias_last_name_used",
+                    "alias_middle_name_used"
+                  ],
+                  "replicaID": "00abe3b8-29fa-4f08-b712-b308408a3f0c",
+                  "routingID": "jd19850000"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. One or more validation errors occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Unauthorized",
+                  "status": 401,
+                  "detail": "error=invalid_token, error_description=The token expired at '02/29/2024 15:43:16'"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. An error occurred while processing your request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Internal Server Error",
+                  "status": 500,
+                  "detail": "An error occurred while processing your request."
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-stoplight": {
+          "id": "fqdwemmqojiu8"
+        }
+      }
+    },
+    "/criminal/natcrim-search-by-address-unregulated": {
+      "post": {
+        "tags": [
+          "Criminal"
+        ],
+        "summary": "Perform instant natcrim search by addresses.",
+        "description": "This endpoint performs an instant natcrim search using information provided. The data should be sent as a JSON payload in the request body.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NatcrimSearchByAddressRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Profile"
+                  }
+                },
+                "example": {
+                  "first_Name": "JOHN",
+                  "middle_Name": "J",
+                  "last_Name": "DOE",
+                  "dob": "19850000",
+                  "searchAddresses": [
+                    "US|GA|ATLANTA|BRIARLAKE|513"
+                  ],
+                  "sourceStates": [
+                    "DC",
+                    "GA",
+                    "NY"
+                  ],
+                  "sexoffenderSources": [
+                    "sof_view"
+                  ],
+                  "watchlistSources": [
+                    "watchlist_view"
+                  ],
+                  "sofs": [
+                    {
+                      "registration_Record_UID": "112521",
+                      "offender_Identity_UID": "47682",
+                      "offender_ID": "FL-36_LOUISEMMANIER_19851206",
+                      "offender_Status": "Released - Subject to Registration",
+                      "full_Name": "LOUIS, EMMANIER P",
+                      "last_Name": "LOUIS",
+                      "first_Name": "EMMANIER",
+                      "middle_Name": "P",
+                      "dob": "19851206",
+                      "address_1": "Haiti",
+                      "zip": "00000",
+                      "gender": "M",
+                      "hair_Color": "Black",
+                      "eye_Color": "Brown",
+                      "height": "511",
+                      "weight": "158",
+                      "race": "Black",
+                      "scars_Marks": "Tattoo Left Hand 1_Tattoo Left Arm 1_Tattoo Right Arm 1",
+                      "address_Verification_Date": "20120109",
+                      "case_Number": "0969158",
+                      "offense_Code": "F.S. 800.04(4)(a",
+                      "offense_Desc_1": "Lewd, Lascivious batt sex w/victim 12-15 years old",
+                      "offense_Count": "1",
+                      "victim_Age": "Minor",
+                      "offender_Image_Hyperlink": "36_LOUISEMMANIER_19851206_1.jpg",
+                      "source": "FL",
+                      "data_Date": "20241005",
+                      "source_ID": "SORFL",
+                      "epR_File_Record_Date": "9/30/2024 9:56:33 AM",
+                      "first_Name_clean": "EMMANIER",
+                      "middle_Name_clean": "P",
+                      "last_Name_clean": "LOUIS",
+                      "doB_clean": "19851206",
+                      "offenseClass": "harm",
+                      "offenseSubclass": "physical harm",
+                      "criminalRecordSourceType": "sexoffenderlist",
+                      "criminalRecordSourceSubType": "sex offender registry",
+                      "imageURI": "https://crimimages.com/SOR/FLsor.photos/36_LOUISEMMANIER_19851206_1.jpg",
+                      "disposition": "Guilty/convict",
+                      "disposition_Date": "20100601",
+                      "record_Date": "20100601",
+                      "dispositionType": "GUILTY"
+                    }
+                  ],
+                  "watchlists": [
+                    {
+                      "entity_Number": "1861463069",
+                      "file_Data_Date": "20240603",
+                      "name": "SCAVONE,JEROME GERARD",
+                      "last_Name": "SCAVONE",
+                      "first_Name": "JEROME",
+                      "middle_Name": "GERARD",
+                      "gender": "M",
+                      "dob": "19851206",
+                      "other_Information": "NPI: 1861463069; Entity_Type_Code: 1; Provider_Credential_Text: MD; Provider_First_Line_Business_Mailing_Address: 1600 LAKELAND HILLS BLVD; Last_Update_Date: 20230323; Provider_License_Number_1: ME70033; Provider_License_Number_State_Code_1: FL;",
+                      "source_Of_Info": "NPPES NPI Registry",
+                      "source_ID": "1899",
+                      "epR_File_Record_Date": "5/13/2024 4:05:08 AM",
+                      "first_Name_clean": "JEROME",
+                      "middle_Name_clean": "GERARD",
+                      "last_Name_clean": "SCAVONE",
+                      "doB_clean": "19851206",
+                      "offenseClass": "unspecified",
+                      "offenseSubclass": "unspecified",
+                      "criminalRecordSourceType": "watchlist",
+                      "criminalRecordSourceSubType": "healthcare registry",
+                      "watchlistaddresses": [
+                        {
+                          "address_ID": "1",
+                          "entity_Number": "1861463069",
+                          "address": "1600 LAKELAND HILLS BLVD",
+                          "city": "LAKELAND",
+                          "state": "FL",
+                          "postal_Code": "338053019",
+                          "country": "US",
+                          "source_ID": "1899",
+                          "epR_File_Record_Date": "5/13/2024 4:05:08 AM",
+                          "searchAddresses": "US|FL|LAKELAND|LAKELAND HILLS|1600"
+                        }
+                      ],
+                      "watchlistaliases": [
+                        {
+                          "alias_ID": "1",
+                          "entity_Number": "1861463069",
+                          "alias_Name": "DOE,JON ,",
+                          "alias_First_Name": "Jon",
+                          "alias_Last_Name": "Doe",
+                          "epR_File_Record_Date": "5/13/2024 4:05:08 AM",
+                          "source_ID": "1899",
+                          "alias_First_Name_clean": "JON",
+                          "alias_Middle_Name_clean": "",
+                          "alias_Last_Name_clean": "DOE"
+                        }
+                      ]
+                    }
+                  ],
+                  "offenders": [
+                    {
+                      "criminalRecordID": "f/z1dQur9LMoUR9fDpNe4A==",
+                      "dob": "19850000",
+                      "epR_File_Record_Date": "6/12/2019 1:17:32 AM",
+                      "first_Name": "BRANDON",
+                      "last_Name": "FOSTER",
+                      "name": "FOSTER, BRANDON",
+                      "offender_ID": "FOSTERBRANDON2017CMD018381",
+                      "source_ID": "dc_courts_view",
+                      "source_State": "DC",
+                      "aliases": [
+                        {
+                          "offender_ID": "FOSTERBRANDON2017CMD018381",
+                          "alias_Name": "FORREST, BRANDON J",
+                          "alias_First_Name": "BRANDON",
+                          "alias_Middle_Name": "J",
+                          "alias_Last_Name": "FORREST",
+                          "source_ID": "dc_courts_view",
+                          "epR_File_Record_Date": "6/12/2019 1:17:32 AM",
+                          "alias_First_Name_clean": "BRANDON",
+                          "alias_Middle_Name_clean": "J",
+                          "alias_Last_Name_clean": "FORREST"
+                        }
+                      ],
+                      "offenses": [
+                        {
+                          "case_Type": "Misdemeanor",
+                          "court_Case_Number": "2017 CMD 018381",
+                          "court_Name": "DC Courts",
+                          "date_Filed": "20171027",
+                          "disposition": "Guilty- Plea Judgment Guilty",
+                          "disposition_Date": "20171212",
+                          "epR_File_Record_Date": "6/12/2019 1:17:32 AM",
+                          "offender_ID": "FOSTERBRANDON2017CMD018381",
+                          "offense_County": "DC",
+                          "offense_ID": "1",
+                          "record_Date": "20171212",
+                          "source_ID": "dc_courts_view",
+                          "dispositionType": "GUILTY",
+                          "offenseClass": "unspecified",
+                          "offenseLevel": "MISDEMEANOR",
+                          "offenseSubclass": "unspecified"
+                        }
+                      ],
+                      "first_Name_clean": "BRANDON",
+                      "middle_Name_clean": "",
+                      "last_Name_clean": "FOSTER",
+                      "doB_clean": "19850000",
+                      "criminalRecordSourceType": "court",
+                      "criminalRecordSourceSubType": "court"
+                    }
+                  ],
+                  "profileHash": "gSOT3WxAex+I9eqdK1JA1Q==",
+                  "courtSources": [
+                    "GA_Cobb_Sheriffs_Inmates",
+                    "dc_courts_view",
+                    "nyaoc"
+                  ],
+                  "profileID": "8676de0f-e6d2-4dfd-830b-7c2368fd3bd4",
+                  "reasons": [
+                    "alias_first_name_used",
+                    "alias_last_name_used",
+                    "alias_middle_name_used"
+                  ],
+                  "replicaID": "00abe3b8-29fa-4f08-b712-b308408a3f0c",
+                  "routingID": "jd19850000"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. One or more validation errors occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Unauthorized",
+                  "status": 401,
+                  "detail": "error=invalid_token, error_description=The token expired at '02/29/2024 15:43:16'"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. An error occurred while processing your request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Internal Server Error",
+                  "status": 500,
+                  "detail": "An error occurred while processing your request."
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-stoplight": {
+          "id": "bvwzj0zazbjm4"
+        }
+      }
+    },
+    "/searches/national-criminal": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Perform instant national criminal search.",
+        "description": "This endpoint performs an instant natcrim search using information provided. The data should be sent as a JSON payload in the request\r\nbody.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CriminalResponseModel"
+                },
+                "example": {
+                  "records": [
+                    {
+                      "name": {
+                        "first_name": "John",
+                        "middle_name": "M",
+                        "last_name": "Doe"
+                      },
+                      "dob": "19730714",
+                      "case_number": "01004100",
+                      "court_jurisdiction": "BEAUFORT DISTRICT",
+                      "state": "CA",
+                      "ssn": "6789",
+                      "age": "60",
+                      "charge_group_id": "384c488b-20ed-4287-a177-73925487c86c",
+                      "address": {
+                        "zipcode": "12345",
+                        "state": "CA",
+                        "city": "New City",
+                        "street": "2780 SUNNY SIDE RD"
+                      },
+                      "full_name": "John M Doe",
+                      "sex": "M",
+                      "race": "African American",
+                      "hair_color": "black",
+                      "eye_color": "blue",
+                      "weight": "175",
+                      "height": "511",
+                      "photo": "http://example.com/photo.jpg",
+                      "record_date": "20200116",
+                      "arresting_agency": "BEAUFORT",
+                      "county": "BEAUFORT",
+                      "source": "ncdocSuperView",
+                      "source_name": "NCDOC SUPERVIEW",
+                      "charges": [
+                        {
+                          "charge": "ASSAULT",
+                          "charge_date": "20090320",
+                          "offense_code": "784.011",
+                          "offense_date": "20090320",
+                          "release_date": "20090321",
+                          "arrest_date": "20090321",
+                          "disposition": "DROPPED ABANDONED",
+                          "disposition_date": "20090514",
+                          "court": "FL Brevard Clerk of Courts"
+                        }
+                      ]
+                    }
+                  ],
+                  "returned_cases": 1
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. One or more validation errors occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                },
+                "example": {
+                  "title": "One or more validation errors occurred.",
+                  "status": 400,
+                  "errors": {
+                    "search_criteria.last_name": [
+                      "The last_name field is required."
+                    ],
+                    "search_criteria.date_of_birth": [
+                      "Invalid date_of_birth format"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Unauthorized",
+                  "status": 401,
+                  "detail": "error=invalid_token, error_description=The token expired at '02/29/2024 15:43:16'"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. An error occurred while processing your request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Internal Server Error",
+                  "status": 500,
+                  "detail": "An error occurred while processing your request."
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-stoplight": {
+          "id": "8dqx9a9qhvlns"
+        }
+      }
+    },
+    "/searches/global-watchlist": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Perform instant global watchlist search.",
+        "description": "This endpoint performs an instant natcrim search using information provided. The data should be sent as a JSON payload in the request\r\nbody.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CriminalResponseModel"
+                },
+                "example": {
+                  "records": [
+                    {
+                      "name": {
+                        "first_name": "John",
+                        "middle_name": "M",
+                        "last_name": "Doe"
+                      },
+                      "dob": "19730714",
+                      "case_number": "01004100",
+                      "court_jurisdiction": "BEAUFORT DISTRICT",
+                      "state": "CA",
+                      "ssn": "6789",
+                      "age": "60",
+                      "charge_group_id": "384c488b-20ed-4287-a177-73925487c86c",
+                      "address": {
+                        "zipcode": "12345",
+                        "state": "CA",
+                        "city": "New City",
+                        "street": "2780 SUNNY SIDE RD"
+                      },
+                      "full_name": "John M Doe",
+                      "sex": "M",
+                      "race": "African American",
+                      "hair_color": "black",
+                      "eye_color": "blue",
+                      "weight": "175",
+                      "height": "511",
+                      "photo": "http://example.com/photo.jpg",
+                      "record_date": "20200116",
+                      "arresting_agency": "BEAUFORT",
+                      "county": "BEAUFORT",
+                      "source": "ncdocSuperView",
+                      "source_name": "NCDOC SUPERVIEW",
+                      "charges": [
+                        {
+                          "charge": "ASSAULT",
+                          "charge_date": "20090320",
+                          "offense_code": "784.011",
+                          "offense_date": "20090320",
+                          "release_date": "20090321",
+                          "arrest_date": "20090321",
+                          "disposition": "DROPPED ABANDONED",
+                          "disposition_date": "20090514",
+                          "court": "FL Brevard Clerk of Courts"
+                        }
+                      ]
+                    }
+                  ],
+                  "returned_cases": 1
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. One or more validation errors occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                },
+                "example": {
+                  "title": "One or more validation errors occurred.",
+                  "status": 400,
+                  "errors": {
+                    "search_criteria.last_name": [
+                      "The last_name field is required."
+                    ],
+                    "search_criteria.date_of_birth": [
+                      "Invalid date_of_birth format"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Unauthorized",
+                  "status": 401,
+                  "detail": "error=invalid_token, error_description=The token expired at '02/29/2024 15:43:16'"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. An error occurred while processing your request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Internal Server Error",
+                  "status": 500,
+                  "detail": "An error occurred while processing your request."
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-stoplight": {
+          "id": "6vxmnqzkkzouu"
+        }
+      }
+    },
+    "/searches/sex-offender": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Perform instant sex offender search.",
+        "description": "This endpoint performs an instant natcrim search using information provided. The data should be sent as a JSON payload in the request\r\nbody.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CriminalResponseModel"
+                },
+                "example": {
+                  "records": [
+                    {
+                      "name": {
+                        "first_name": "John",
+                        "middle_name": "M",
+                        "last_name": "Doe"
+                      },
+                      "dob": "19730714",
+                      "case_number": "01004100",
+                      "court_jurisdiction": "BEAUFORT DISTRICT",
+                      "state": "CA",
+                      "ssn": "6789",
+                      "age": "60",
+                      "charge_group_id": "384c488b-20ed-4287-a177-73925487c86c",
+                      "address": {
+                        "zipcode": "12345",
+                        "state": "CA",
+                        "city": "New City",
+                        "street": "2780 SUNNY SIDE RD"
+                      },
+                      "full_name": "John M Doe",
+                      "sex": "M",
+                      "race": "African American",
+                      "hair_color": "black",
+                      "eye_color": "blue",
+                      "weight": "175",
+                      "height": "511",
+                      "photo": "http://example.com/photo.jpg",
+                      "record_date": "20200116",
+                      "arresting_agency": "BEAUFORT",
+                      "county": "BEAUFORT",
+                      "source": "ncdocSuperView",
+                      "source_name": "NCDOC SUPERVIEW",
+                      "sex_charges": [
+                        {
+                          "charge": "ASSAULT",
+                          "deposition_date": "20090320",
+                          "disposition": "DROPPED ABANDONED",
+                          "disposition_date": "20090514"
+                        }
+                      ]
+                    }
+                  ],
+                  "returned_cases": 1
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. One or more validation errors occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                },
+                "example": {
+                  "title": "One or more validation errors occurred.",
+                  "status": 400,
+                  "errors": {
+                    "search_criteria.last_name": [
+                      "The last_name field is required."
+                    ],
+                    "search_criteria.date_of_birth": [
+                      "Invalid date_of_birth format"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Unauthorized",
+                  "status": 401,
+                  "detail": "error=invalid_token, error_description=The token expired at '02/29/2024 15:43:16'"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error. An error occurred while processing your request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                },
+                "example": {
+                  "title": "Internal Server Error",
+                  "status": 500,
+                  "detail": "An error occurred while processing your request."
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "x-stoplight": {
+          "id": "kp2823zwxq20u"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Address": {
+        "type": "object",
+        "properties": {
+          "zipcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "street": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "3t0w3ouhcdh14"
+        }
+      },
+      "AddressModel": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string",
+            "nullable": true,
+            "example": "4610 N Jonestown Road Apt 18"
+          },
+          "city": {
+            "type": "string",
+            "nullable": true,
+            "example": "Harrisburg"
+          },
+          "state": {
+            "type": "string",
+            "nullable": true,
+            "example": "PA"
+          },
+          "zipCode": {
+            "type": "string",
+            "nullable": true,
+            "example": "17109"
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "7czfml9omqwk9"
+        }
+      },
+      "AddressOsModel": {
+        "type": "object",
+        "properties": {
+          "offender_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "address1": {
+            "type": "string",
+            "nullable": true
+          },
+          "address2": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "zip": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "epR_File_Record_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "searchAddresses": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "4zi9wjmpc3dmr"
+        }
+      },
+      "AliasOs": {
+        "type": "object",
+        "properties": {
+          "offender_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_First_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Middle_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Last_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Suffix": {
+            "type": "string",
+            "nullable": true
+          },
+          "state_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "epR_File_Record_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_First_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Middle_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Last_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "12u61lobs9lxk"
+        }
+      },
+      "ChargeModel": {
+        "type": "object",
+        "properties": {
+          "fines": {
+            "type": "string",
+            "nullable": true
+          },
+          "plea": {
+            "type": "string",
+            "nullable": true
+          },
+          "charge": {
+            "type": "string",
+            "nullable": true
+          },
+          "charge_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "charge_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "release_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "arrest_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "conviction_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "disposition": {
+            "type": "string",
+            "nullable": true
+          },
+          "disposition_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "court": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "soogwzha4x33y"
+        }
+      },
+      "CriminalResponseModel": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Record"
+            }
+          },
+          "returned_cases": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "client_reference_id": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "rkmkayyqfjrnw"
+        }
+      },
+      "Name": {
+        "type": "object",
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "middle_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "fjk62bee2az7d"
+        }
+      },
+      "NatcrimSearchByAddressRequest": {
+        "required": [
+          "addresses"
+        ],
+        "type": "object",
+        "properties": {
+          "referenceId": {
+            "type": "string",
+            "description": "ID for the request",
+            "nullable": true,
+            "example": "123456"
+          },
+          "addresses": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressModel"
+            }
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Specify maximum records returned for the search",
+            "format": "int32",
+            "nullable": true,
+            "example": 50
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "9iandugulga9n"
+        }
+      },
+      "OffenderOsModel": {
+        "type": "object",
+        "properties": {
+          "address_1": {
+            "type": "string",
+            "nullable": true
+          },
+          "address_2": {
+            "type": "string",
+            "nullable": true
+          },
+          "address_3": {
+            "type": "string",
+            "nullable": true
+          },
+          "birth_Country": {
+            "type": "string",
+            "nullable": true
+          },
+          "birth_County": {
+            "type": "string",
+            "nullable": true
+          },
+          "birth_State": {
+            "type": "string",
+            "nullable": true
+          },
+          "citizenship": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "criminalRecordID": {
+            "type": "string",
+            "nullable": true
+          },
+          "dC_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "dob": {
+            "type": "string",
+            "nullable": true
+          },
+          "driver_License_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "driver_License_State_Issue": {
+            "type": "string",
+            "nullable": true
+          },
+          "epR_File_Record_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "ethnicity": {
+            "type": "string",
+            "nullable": true
+          },
+          "ethnicity_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "eye_Color": {
+            "type": "string",
+            "nullable": true
+          },
+          "fbI_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "file_Data_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "first_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "hair_Color": {
+            "type": "string",
+            "nullable": true
+          },
+          "height": {
+            "type": "string",
+            "nullable": true
+          },
+          "inmate_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "institution_Address": {
+            "type": "string",
+            "nullable": true
+          },
+          "institution_City": {
+            "type": "string",
+            "nullable": true
+          },
+          "institution_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "institution_Details": {
+            "type": "string",
+            "nullable": true
+          },
+          "institution_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "institution_Phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "institution_State": {
+            "type": "string",
+            "nullable": true
+          },
+          "institution_Zip": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Institution": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Institution_Address": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Institution_City": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Institution_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Institution_State": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Institution_Zip": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "middle_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "military_Branch": {
+            "type": "string",
+            "nullable": true
+          },
+          "military_Discharge": {
+            "type": "string",
+            "nullable": true
+          },
+          "military_Discharge_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "military_Service": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "next_Kin_Address": {
+            "type": "string",
+            "nullable": true
+          },
+          "next_Kin_City": {
+            "type": "string",
+            "nullable": true
+          },
+          "next_Kin_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "next_Kin_Phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "next_Kin_State": {
+            "type": "string",
+            "nullable": true
+          },
+          "next_Kin_Type": {
+            "type": "string",
+            "nullable": true
+          },
+          "next_Kin_Type_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "next_Kin_Zip": {
+            "type": "string",
+            "nullable": true
+          },
+          "offender_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "offender_Status": {
+            "type": "string",
+            "nullable": true
+          },
+          "offender_Status_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "other_DOB_Used": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          },
+          "physical_Build": {
+            "type": "string",
+            "nullable": true
+          },
+          "race": {
+            "type": "string",
+            "nullable": true
+          },
+          "race_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "rebuttal": {
+            "type": "string",
+            "nullable": true
+          },
+          "release_Information": {
+            "type": "string",
+            "nullable": true
+          },
+          "released_to_Address": {
+            "type": "string",
+            "nullable": true
+          },
+          "released_to_City": {
+            "type": "string",
+            "nullable": true
+          },
+          "released_to_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "released_to_State": {
+            "type": "string",
+            "nullable": true
+          },
+          "released_to_Zip": {
+            "type": "string",
+            "nullable": true
+          },
+          "scarsMarksTattoos": {
+            "type": "string",
+            "nullable": true
+          },
+          "ssn": {
+            "type": "string",
+            "nullable": true
+          },
+          "skin_Color": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_County": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_State": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "state_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "state_ID_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "suffix": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "string",
+            "nullable": true
+          },
+          "zip": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "addresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressOsModel"
+            },
+            "nullable": true
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AliasOs"
+            },
+            "nullable": true
+          },
+          "offenses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OffenseOsModel"
+            },
+            "nullable": true
+          },
+          "first_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "middle_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "doB_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "criminalRecordSourceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "criminalRecordSourceSubType": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageURI": {
+            "type": "string",
+            "nullable": true
+          },
+          "dob_Link_Method": {
+            "type": "string",
+            "nullable": true
+          },
+          "searchAddresses": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "260pkqvcmcbxr"
+        }
+      },
+      "OffenseOsModel": {
+        "type": "object",
+        "properties": {
+          "arraignment_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "arrest_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "arresting_Agency": {
+            "type": "string",
+            "nullable": true
+          },
+          "case_Category": {
+            "type": "string",
+            "nullable": true
+          },
+          "case_Category_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "case_Type": {
+            "type": "string",
+            "nullable": true
+          },
+          "case_Year": {
+            "type": "string",
+            "nullable": true
+          },
+          "citation_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "county_Convicted": {
+            "type": "string",
+            "nullable": true
+          },
+          "court_Case_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "court_Clerk_Phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "court_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "court_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "date_Filed": {
+            "type": "string",
+            "nullable": true
+          },
+          "disposition": {
+            "type": "string",
+            "nullable": true
+          },
+          "disposition_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "epR_File_Record_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "nciC_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "new_Plea": {
+            "type": "string",
+            "nullable": true
+          },
+          "offender_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_City": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_Class": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_County": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_Prefix": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_State": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_Type": {
+            "type": "string",
+            "nullable": true
+          },
+          "original_Plea": {
+            "type": "string",
+            "nullable": true
+          },
+          "original_Plea_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "plea_Withdrawn_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "rebuttal": {
+            "type": "string",
+            "nullable": true
+          },
+          "record_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "state_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "state_Convicted": {
+            "type": "string",
+            "nullable": true
+          },
+          "sub_Offense": {
+            "type": "string",
+            "nullable": true
+          },
+          "sub_Offense_Class": {
+            "type": "string",
+            "nullable": true
+          },
+          "sub_Offense_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "sub_Offense_Prefix": {
+            "type": "string",
+            "nullable": true
+          },
+          "sub_Offense_Type": {
+            "type": "string",
+            "nullable": true
+          },
+          "verdict_Conviction_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "verdict_Finding": {
+            "type": "string",
+            "nullable": true
+          },
+          "charge_No": {
+            "type": "string",
+            "nullable": true
+          },
+          "dispositionType": {
+            "type": "string",
+            "nullable": true
+          },
+          "offenseClass": {
+            "type": "string",
+            "nullable": true
+          },
+          "offenseLevel": {
+            "type": "string",
+            "nullable": true
+          },
+          "offenseSubclass": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentences": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SentenceOsModel"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "5p4p3t8dqfy2w"
+        }
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Summary of the problem type.",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "description": "The HTTP status code.",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "description": "A human-readable explanation specific to this occurrence of the problem.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": {},
+        "x-stoplight": {
+          "id": "eq1v99yyakafg"
+        }
+      },
+      "Profile": {
+        "type": "object",
+        "properties": {
+          "first_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "middle_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "dob": {
+            "type": "string",
+            "nullable": true
+          },
+          "searchAddresses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "sourceStates": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "sexoffenderSources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "watchlistSources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "sofs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SofModel"
+            },
+            "nullable": true
+          },
+          "sofaliases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SofAliasModel"
+            },
+            "nullable": true
+          },
+          "watchlists": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WatchlistModel"
+            },
+            "nullable": true
+          },
+          "offenders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OffenderOsModel"
+            },
+            "nullable": true
+          },
+          "profileHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "courtSources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "profileID": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "replicaID": {
+            "type": "string",
+            "nullable": true
+          },
+          "routingID": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "izfgei3r50ieb"
+        }
+      },
+      "Record": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/Name"
+          },
+          "partial_dob": {
+            "type": "string",
+            "nullable": true
+          },
+          "dob": {
+            "type": "string",
+            "nullable": true
+          },
+          "yob": {
+            "type": "string",
+            "nullable": true
+          },
+          "case_number": {
+            "type": "string",
+            "nullable": true
+          },
+          "court_jurisdiction": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "ssn": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "string",
+            "nullable": true
+          },
+          "charge_group_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "full_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "sex": {
+            "type": "string",
+            "nullable": true
+          },
+          "race": {
+            "type": "string",
+            "nullable": true
+          },
+          "hair_color": {
+            "type": "string",
+            "nullable": true
+          },
+          "eye_color": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "string",
+            "nullable": true
+          },
+          "height": {
+            "type": "string",
+            "nullable": true
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          },
+          "record_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "arresting_agency": {
+            "type": "string",
+            "nullable": true
+          },
+          "county": {
+            "type": "string",
+            "nullable": true
+          },
+          "source": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "charges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChargeModel"
+            }
+          },
+          "sex_charges": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SexChargeModel"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "0fxtj9b5u875d"
+        }
+      },
+      "SearchByNameRequest": {
+        "required": [
+          "lastName"
+        ],
+        "type": "object",
+        "properties": {
+          "referenceId": {
+            "type": "string",
+            "description": "ID for the request",
+            "nullable": true,
+            "example": "123456"
+          },
+          "lastName": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Offender's Last name(support wildcard) [ex: smith] [ex: jac* = jackson]",
+            "example": "Doe"
+          },
+          "firstName": {
+            "type": "string",
+            "description": "Offender's First name (support wildcard)",
+            "nullable": true,
+            "example": "John"
+          },
+          "middleName": {
+            "type": "string",
+            "description": "Offender's middle name (support wildcard)",
+            "nullable": true,
+            "example": "James"
+          },
+          "includeEmptyMiddlename": {
+            "type": "boolean",
+            "description": "Flag to include empty middle name",
+            "nullable": true,
+            "example": true
+          },
+          "includePrefixMiddlename": {
+            "type": "boolean",
+            "description": "Flag to include prefixes for middle name\r\n\"bob\" matches \"b\" or \"bo\" or \"bob\" or \"bobb\" or \"bobby\"",
+            "nullable": true,
+            "example": true
+          },
+          "useNameVariations": {
+            "type": "boolean",
+            "description": "Flag to use name variations",
+            "nullable": true,
+            "example": true
+          },
+          "state": {
+            "type": "string",
+            "description": "State of the person",
+            "nullable": true,
+            "example": "NY"
+          },
+          "dob": {
+            "type": "string",
+            "description": "Offender's Date of birth YYYYMMDD",
+            "nullable": true,
+            "example": "19851206"
+          },
+          "includePartialDOB": {
+            "type": "boolean",
+            "description": "This flag controls whether records can partially match your criteria\r\n            \r\nInclude YYYY match only (mmdd can be any value)\r\n            \r\nInclude MMDD match only (ccyy can be any value)\r\n            \r\nFor example, with this flag set, if you search for 1963-01-25, you may receive records with DOBs 1963-11-11 (because the year matches) and 2000-01-25 (because the month and day matches.)",
+            "nullable": true,
+            "example": true
+          },
+          "includeEmptyDOB": {
+            "type": "boolean",
+            "description": "This flag controls whether records with empty or partially empty DOBs matches your criteria\r\n            \r\nInclude DOB(YYYYMM match, DD is missed or empty string)\r\n            \r\nInclude DOB(YYYY match, MMDD is missed or empty string)\r\n            \r\nInclude DOB(MMDD match, YYYY is missed or empty string)\r\n            \r\nInclude Empty DOB(YYYYMMDD is missed or empty string)\r\n            \r\nFor example, with this flag set, if you search for 1963-01-25, you may receive records with DOBs 1963-01-00, 1963-00-00, 0000-01-25, or 0000-00-00.",
+            "nullable": true,
+            "example": true
+          },
+          "includePartiallyEmptyDob": {
+            "type": "boolean",
+            "description": "This flag controls whether records with partially empty DOBs matches your criteria\r\n            \r\nInclude DOB(YYYYMM match, DD is missed or empty string)\r\n            \r\nInclude DOB(YYYY match, MMDD is missed or empty string)\r\n            \r\nInclude DOB(MMDD match, YYYY is missed or empty string)\r\n            \r\nFor example, with this flag set, if you search for 1963-01-25, you may receive records with DOBs 1963-01-00, 1963-00-00, 0000-01-25.",
+            "nullable": true,
+            "example": true
+          },
+          "includeFullyEmptyDob": {
+            "type": "boolean",
+            "description": "This flag controls whether records with empty DOBs matches your criteria\r\n            \r\nInclude Empty DOB(YYYYMMDD is missed or empty string)\r\n            \r\nFor example, with this flag set, if you search for 1963-01-25, you may receive records with DOBs 0000-00-00 or empty.",
+            "nullable": true,
+            "example": true
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of categories to filter the search results.\r\nOnly profiles that contain these categories will be selected.\r\nIf not provided, all categories will be selected.\r\nValid values: \"Criminal\", \"SexOffender\", \"GlobalWatchlist\"",
+            "nullable": true
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Specify maximum records returned for the search",
+            "format": "int32",
+            "nullable": true,
+            "example": 50
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "yeqb9irihkyq7"
+        }
+      },
+      "SearchCriteria": {
+        "type": "object",
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "description": "Offender's First name (support wildcard)",
+            "nullable": true,
+            "example": "John"
+          },
+          "middle_name": {
+            "type": "string",
+            "description": "Offender's middle name (support wildcard)",
+            "nullable": true,
+            "example": "James"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Offender's Last name(support wildcard) [ex: smith] [ex: jac* = jackson]",
+            "nullable": true,
+            "example": "Doe"
+          },
+          "date_of_birth": {
+            "type": "string",
+            "description": "Offender's Date of birth YYYYMMDD",
+            "nullable": true,
+            "example": "19851206"
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "9y58tgikmxy9r"
+        }
+      },
+      "SearchRequest": {
+        "required": [
+          "search_criteria"
+        ],
+        "type": "object",
+        "properties": {
+          "client_reference_id": {
+            "type": "string",
+            "description": "ID for the request",
+            "nullable": true,
+            "example": "123456"
+          },
+          "search_criteria": {
+            "$ref": "#/components/schemas/SearchCriteria"
+          },
+          "include_empty_middle_name": {
+            "type": "boolean",
+            "description": "Flag to include empty middle name",
+            "nullable": true,
+            "example": true
+          },
+          "include_prefix_middle_name": {
+            "type": "boolean",
+            "description": "Flag to include prefixes for middle name \"bob\" matches \"b\" or \"bo\" or \"bob\"",
+            "nullable": true,
+            "example": true
+          },
+          "include_partial_date_of_birth": {
+            "type": "boolean",
+            "description": "Flag to include partial date of birth\r\n            Include YYYY match only (mmdd can be any value)\r\n            Include MMDD match only (ccyy can be any value)",
+            "nullable": true,
+            "example": true
+          },
+          "include_empty_date_of_birth": {
+            "type": "boolean",
+            "description": "Flag to include empty date of birth\r\n            Include DOB(YYYYMM match, DD is missed or empty string)\r\n            DOB(YYYY match, MMDD is missed or empty string)\r\n            DOB(MMDD match, YYYY is missed or empty string)",
+            "nullable": true,
+            "example": true
+          },
+          "use_name_variations": {
+            "type": "boolean",
+            "description": "Flag to use name variations",
+            "nullable": true,
+            "example": true
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Specify maximum records returned for the search",
+            "format": "int32",
+            "nullable": true,
+            "example": 50
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "be6cjv1ln7oux"
+        }
+      },
+      "SentenceOsModel": {
+        "type": "object",
+        "properties": {
+          "actual_Release_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "admission_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "admission_Type": {
+            "type": "string",
+            "nullable": true
+          },
+          "case_Type": {
+            "type": "string",
+            "nullable": true
+          },
+          "case_Type_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "epR_File_Record_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "maximum_Release_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "offender_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "parole_End_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "parole_Max_Days": {
+            "type": "string",
+            "nullable": true
+          },
+          "parole_Max_Months": {
+            "type": "string",
+            "nullable": true
+          },
+          "parole_Max_Years": {
+            "type": "string",
+            "nullable": true
+          },
+          "parole_Min_Days": {
+            "type": "string",
+            "nullable": true
+          },
+          "parole_Min_Months": {
+            "type": "string",
+            "nullable": true
+          },
+          "parole_Min_Years": {
+            "type": "string",
+            "nullable": true
+          },
+          "parole_Start_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "probation_Agency": {
+            "type": "string",
+            "nullable": true
+          },
+          "probation_End_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "probation_Follows_Y_N": {
+            "type": "string",
+            "nullable": true
+          },
+          "probation_Max_Days": {
+            "type": "string",
+            "nullable": true
+          },
+          "probation_Max_Months": {
+            "type": "string",
+            "nullable": true
+          },
+          "probation_Max_Years": {
+            "type": "string",
+            "nullable": true
+          },
+          "probation_Min_Days": {
+            "type": "string",
+            "nullable": true
+          },
+          "probation_Min_Months": {
+            "type": "string",
+            "nullable": true
+          },
+          "probation_Min_Years": {
+            "type": "string",
+            "nullable": true
+          },
+          "probation_Parole_Status": {
+            "type": "string",
+            "nullable": true
+          },
+          "probation_Start_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "release_Type": {
+            "type": "string",
+            "nullable": true
+          },
+          "scheduled_Release_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentence_Begin_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentence_Comments1": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentence_Comments2": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentence_Details": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentence_Max_Days": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentence_Max_Months": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentence_Max_Years": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentence_Min_Days": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentence_Min_Months": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentence_Min_Years": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentence_Status": {
+            "type": "string",
+            "nullable": true
+          },
+          "sentence_Type": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "state_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "supervision_County": {
+            "type": "string",
+            "nullable": true
+          },
+          "suspended_Jail_Days": {
+            "type": "string",
+            "nullable": true
+          },
+          "suspended_Jail_Months": {
+            "type": "string",
+            "nullable": true
+          },
+          "suspended_Jail_Years": {
+            "type": "string",
+            "nullable": true
+          },
+          "time_Served_Days": {
+            "type": "string",
+            "nullable": true
+          },
+          "time_Served_Months": {
+            "type": "string",
+            "nullable": true
+          },
+          "time_Served_Years": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "zdxgmingcy1i9"
+        }
+      },
+      "SexChargeModel": {
+        "type": "object",
+        "properties": {
+          "charge": {
+            "type": "string",
+            "nullable": true
+          },
+          "deposition_date": {
+            "type": "string",
+            "nullable": true
+          },
+          "disposition": {
+            "type": "string",
+            "nullable": true
+          },
+          "disposition_date": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "8umg7xf83siyw"
+        }
+      },
+      "SofAliasModel": {
+        "type": "object",
+        "properties": {
+          "alias_Record_UID": {
+            "type": "string",
+            "nullable": true
+          },
+          "offender_Identity_UID": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Full_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Last_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_First_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Middle_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Suffix": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_DOB": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "epR_File_Record_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_First_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Middle_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Last_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_DOB_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "sonrxztulgjqw"
+        }
+      },
+      "SofModel": {
+        "type": "object",
+        "properties": {
+          "registration_Record_UID": {
+            "type": "string",
+            "nullable": true
+          },
+          "offender_Identity_UID": {
+            "type": "string",
+            "nullable": true
+          },
+          "offender_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "ssn": {
+            "type": "string",
+            "nullable": true
+          },
+          "offender_Status": {
+            "type": "string",
+            "nullable": true
+          },
+          "offender_Category": {
+            "type": "string",
+            "nullable": true
+          },
+          "risk_Level": {
+            "type": "string",
+            "nullable": true
+          },
+          "full_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "first_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "middle_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "suffix": {
+            "type": "string",
+            "nullable": true
+          },
+          "dob": {
+            "type": "string",
+            "nullable": true
+          },
+          "address_1": {
+            "type": "string",
+            "nullable": true
+          },
+          "address_2": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "zip": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "hair_Color": {
+            "type": "string",
+            "nullable": true
+          },
+          "eye_Color": {
+            "type": "string",
+            "nullable": true
+          },
+          "height": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "string",
+            "nullable": true
+          },
+          "race": {
+            "type": "string",
+            "nullable": true
+          },
+          "scars_Marks": {
+            "type": "string",
+            "nullable": true
+          },
+          "skin_Tone": {
+            "type": "string",
+            "nullable": true
+          },
+          "address_Verification_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "case_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_Desc_1": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_Desc_2": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense_Count": {
+            "type": "string",
+            "nullable": true
+          },
+          "conviction_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "conviction_Place": {
+            "type": "string",
+            "nullable": true
+          },
+          "victim_Age": {
+            "type": "string",
+            "nullable": true
+          },
+          "victim_Minor_Flag": {
+            "type": "string",
+            "nullable": true
+          },
+          "victim_Gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "driver_License_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "driver_License_State": {
+            "type": "string",
+            "nullable": true
+          },
+          "vehicle_Year": {
+            "type": "string",
+            "nullable": true
+          },
+          "vehicle_Color": {
+            "type": "string",
+            "nullable": true
+          },
+          "vehicle_Make": {
+            "type": "string",
+            "nullable": true
+          },
+          "vehicle_Model": {
+            "type": "string",
+            "nullable": true
+          },
+          "vehicle_License_Plate": {
+            "type": "string",
+            "nullable": true
+          },
+          "vehicle_License_Plate_State": {
+            "type": "string",
+            "nullable": true
+          },
+          "offender_Image_Hyperlink": {
+            "type": "string",
+            "nullable": true
+          },
+          "court": {
+            "type": "string",
+            "nullable": true
+          },
+          "source": {
+            "type": "string",
+            "nullable": true
+          },
+          "data_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "zip4": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "epR_File_Record_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "first_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "middle_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "doB_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "offenseClass": {
+            "type": "string",
+            "nullable": true
+          },
+          "offenseSubclass": {
+            "type": "string",
+            "nullable": true
+          },
+          "criminalRecordSourceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "criminalRecordSourceSubType": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageURI": {
+            "type": "string",
+            "nullable": true
+          },
+          "dob_Link_Method": {
+            "type": "string",
+            "nullable": true
+          },
+          "disposition": {
+            "type": "string",
+            "nullable": true
+          },
+          "disposition_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "record_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "dispositionType": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "xkhzsvcevmy1j"
+        }
+      },
+      "ValidationProblemDetails": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Summary of the problem type.",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "description": "The HTTP status code.",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "description": "A human-readable explanation specific to this occurrence of the problem.",
+            "nullable": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "additionalProperties": {},
+        "x-stoplight": {
+          "id": "yyexgh4p87qhw"
+        }
+      },
+      "WatchlistAddressOsModel": {
+        "type": "object",
+        "properties": {
+          "address_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "entity_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "state": {
+            "type": "string",
+            "nullable": true
+          },
+          "postal_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "address_Remarks": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "epR_File_Record_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "searchAddresses": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "xmt0hpds8evdu"
+        }
+      },
+      "WatchlistAliasModel": {
+        "type": "object",
+        "properties": {
+          "alias_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "entity_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Name_Type": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_First_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Middle_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Last_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Remarks": {
+            "type": "string",
+            "nullable": true
+          },
+          "epR_File_Record_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_First_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Middle_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "alias_Last_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "tcnmesayvdlpa"
+        }
+      },
+      "WatchlistModel": {
+        "type": "object",
+        "properties": {
+          "entity_Number": {
+            "type": "string",
+            "nullable": true
+          },
+          "file_Data_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "first_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "middle_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "suffix": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "string",
+            "nullable": true
+          },
+          "dob": {
+            "type": "string",
+            "nullable": true
+          },
+          "birth_Place": {
+            "type": "string",
+            "nullable": true
+          },
+          "spoken_Language": {
+            "type": "string",
+            "nullable": true
+          },
+          "nationality": {
+            "type": "string",
+            "nullable": true
+          },
+          "citizenship": {
+            "type": "string",
+            "nullable": true
+          },
+          "race": {
+            "type": "string",
+            "nullable": true
+          },
+          "eye_Color": {
+            "type": "string",
+            "nullable": true
+          },
+          "hair_Color": {
+            "type": "string",
+            "nullable": true
+          },
+          "height": {
+            "type": "string",
+            "nullable": true
+          },
+          "weight": {
+            "type": "string",
+            "nullable": true
+          },
+          "build": {
+            "type": "string",
+            "nullable": true
+          },
+          "scars_Marks": {
+            "type": "string",
+            "nullable": true
+          },
+          "offense": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "individuals_Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "program_Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "program_Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "remarks": {
+            "type": "string",
+            "nullable": true
+          },
+          "vessel_Call_Sign": {
+            "type": "string",
+            "nullable": true
+          },
+          "vessel_Type": {
+            "type": "string",
+            "nullable": true
+          },
+          "vessel_Tonnage": {
+            "type": "string",
+            "nullable": true
+          },
+          "vessel_Gross_Reg_Tonnage": {
+            "type": "string",
+            "nullable": true
+          },
+          "vessel_Flag": {
+            "type": "string",
+            "nullable": true
+          },
+          "vessel_Owner": {
+            "type": "string",
+            "nullable": true
+          },
+          "effective_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiration_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "reward": {
+            "type": "string",
+            "nullable": true
+          },
+          "warrant_By": {
+            "type": "string",
+            "nullable": true
+          },
+          "affiliated_Organization": {
+            "type": "string",
+            "nullable": true
+          },
+          "other_Information": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_Of_Info": {
+            "type": "string",
+            "nullable": true
+          },
+          "source_ID": {
+            "type": "string",
+            "nullable": true
+          },
+          "epR_File_Record_Date": {
+            "type": "string",
+            "nullable": true
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          },
+          "first_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "middle_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "last_Name_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "doB_clean": {
+            "type": "string",
+            "nullable": true
+          },
+          "offenseClass": {
+            "type": "string",
+            "nullable": true
+          },
+          "offenseSubclass": {
+            "type": "string",
+            "nullable": true
+          },
+          "criminalRecordSourceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "criminalRecordSourceSubType": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageURI": {
+            "type": "string",
+            "nullable": true
+          },
+          "dob_Link_Method": {
+            "type": "string",
+            "nullable": true
+          },
+          "reasons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "watchlistaddresses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WatchlistAddressOsModel"
+            },
+            "nullable": true
+          },
+          "watchlistaliases": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WatchlistAliasModel"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-stoplight": {
+          "id": "bfnj82r2cly1d"
+        }
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://auth-api-staging.tesseradata.com/oauth2/token",
+            "scopes": {
+              "https://natcrim-api-staging.tesseradata.com/user": "Default access scope for NatCrim API"
+            }
+          }
+        }
+      }
+    }
+  }
+}
